@@ -8,6 +8,7 @@ import { parseCookies } from "nookies";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Router from "next/router";
+import Script from "next/script";
 
 const Checkout = () => {
   const { doctorId, polyclinicId, fee } = useRouter().query;
@@ -179,6 +180,11 @@ const Checkout = () => {
 
   return (
     <>
+      <Script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossOrigin="anonymous"
+      ></Script>
       <section className="bg-dashboard my-lg-4">
         <div className="container">
           <form onSubmit={handleSubmit(checkout)}>
