@@ -83,9 +83,9 @@ const Index = () => {
                             aria-label="Default select example"
                           >
                             <option selected>Select Department</option>
-                            {specialties?.map((curElem) => {
+                            {specialties?.map((curElem, index) => {
                               return (
-                                <option value={curElem.name}>
+                                <option value={curElem.name} key={index}>
                                   {curElem.name}
                                 </option>
                               );

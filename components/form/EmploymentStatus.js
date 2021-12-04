@@ -94,10 +94,10 @@ const EmploymentStatus = ({ patient }) => {
             style={{ color: "aliceblue" }}
           >
             <div className="row align-items-center">
-              <div className="col-md-8">Employment Status</div>
-              <div className="col-md-4">
+              <div className="col-md-12">Employment Status</div>
+              {/* <div className="col-md-4">
                 <span className="badge bg-warning"> Pending </span>
-              </div>
+              </div> */}
             </div>
           </button>
         </h2>

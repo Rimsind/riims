@@ -63,10 +63,10 @@ const GeneralInformation = ({ patient }) => {
             style={{ color: "aliceblue" }}
           >
             <div className="row align-items-center">
-              <div className="col-md-8">General Information</div>
-              <div className="col-md-4">
+              <div className="col-md-12">General Information</div>
+              {/* <div className="col-md-4">
                 <span className="badge bg-warning"> Pending </span>
-              </div>
+              </div> */}
             </div>
           </button>
         </h2>

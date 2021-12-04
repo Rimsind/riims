@@ -1,5 +1,15 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 const Confirmation = () => {
+  const { appointmentId, date } = useRouter().query;
+
+  if (!appointmentId || !date) {
+    return (
+      <div>
+        <h2>Booking Unsuccesfull</h2>
+      </div>
+    );
+  }
   return (
     <>
       <section className="bg-dashboard my-lg-4">
@@ -14,9 +24,9 @@ const Confirmation = () => {
                   </div>
                   <div className="confirmation-details">
                     <h3>Booking Successfull</h3>
-                    <p className="fs-6">Booking ID - 32658</p>
+                    <p className="fs-6">Booking ID - {appointmentId}</p>
                     <h6>Your appointment is booked.</h6>
-                    <h6>For 01.11.2021 10:30 A.M</h6>
+                    <h6>For {date}</h6>
                   </div>
                 </div>
               </div>

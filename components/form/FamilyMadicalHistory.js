@@ -83,10 +83,10 @@ const FamilyMadicalHistory = ({ patient }) => {
             style={{ color: "aliceblue" }}
           >
             <div className="row align-items-center">
-              <div className="col-md-9">Family Medical History</div>
-              <div className="col-md-3">
+              <div className="col-md-12">Family Medical History</div>
+              {/* <div className="col-md-3">
                 <span className="badge bg-warning"> Pending </span>
-              </div>
+              </div> */}
             </div>
           </button>
         </h2>

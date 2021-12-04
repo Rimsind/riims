@@ -44,7 +44,7 @@ const Navbar = () => {
                 >
                   <Link href="/user/my-appointments" passHref>
                     <Image
-                      src="/images/doctors/doc.png"
+                      src="/images/profile.png"
                       className="avatar avatar-md-sm rounded-circle border-0 shadow"
                       height="50"
                       width="50"

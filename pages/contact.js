@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import Link from "next/link";
 const contact = () => {
   return (
     <>
@@ -48,13 +48,8 @@ const contact = () => {
                 </div>
                 <div className="card-body p-0 mt-3">
                   <h5>Phone</h5>
-                  <p className="text-muted mt-3">
-                    Great doctor if you need your family member to get effective
-                    assistance
-                  </p>
-                  <a href="tel:+152534-468-854" className="link">
-                    +152 534-468-854
-                  </a>
+
+                  <p>+91 8597394414</p>
                 </div>
               </div>
             </div>
@@ -66,13 +61,13 @@ const contact = () => {
                 </div>
                 <div className="card-body p-0 mt-3">
                   <h5>Email</h5>
-                  <p className="text-muted mt-3">
-                    Great doctor if you need your family member to get effective
-                    assistance
-                  </p>
-                  <a href="mailto:contact@example.com" className="link">
-                    contact@example.com
-                  </a>
+                  <Link href="mailto:info@rimsind.com">
+                    <a className="link">info@rimsind.com</a>
+                  </Link>
+                  <br />
+                  <Link href="mailto:info@rimsind.com">
+                    <a className="link">info@rimsind.com</a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -85,12 +80,11 @@ const contact = () => {
                 <div className="card-body p-0 mt-3">
                   <h5>Location</h5>
                   <p className="text-muted mt-3">
-                    C/54 Northwest Freeway, Suite 558, <br />
-                    Houston, USA 485
+                    Module-208, Webel IT Park, City Center, Haldia,
                   </p>
-                  <a href="#" className="link">
-                    View on Google map
-                  </a>
+                  <p className="text-muted mt-3">
+                    WestBengal, India, PIN - 721657
+                  </p>
                 </div>
               </div>
             </div>

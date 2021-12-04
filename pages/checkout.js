@@ -7,6 +7,7 @@ import { apiUrl, fetcher } from "config/api";
 import { parseCookies } from "nookies";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Router from "next/router";
 
 const Checkout = () => {
   const { doctorId, polyclinicId, fee } = useRouter().query;
@@ -46,42 +47,57 @@ const Checkout = () => {
   const { register, handleSubmit } = useForm();
   const checkout = async (data, event) => {
     event.preventDefault();
-    try {
-      const payload = {
-        patient: currentUser.profileId,
-        doctor: doctor.id,
-        date: data.date,
-        chiefComplaints: complainList,
-        polyclinic: polyclinic.id,
-        general_problems: data.general_problems.toString(),
-        // time: "12",
-        joint_related_problems: data.joint_related_problems.toString(),
-        neuro_problems: data.neuro_problems.toString(),
-        heart_problems: data.heart_problems.toString(),
-        blood_problems: data.blood_problems.toString(),
-        stomach_problems: data.stomach_problems.toString(),
-        mental_problems: data.mental_problems.toString(),
-        genetal_problems: data.genetal_problems.toString(),
-      };
-      console.log(payload, "payload");
 
-      const res = await axios.post(`${apiUrl}/appointments`, payload, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const result = res.data;
-      alert("Booking Succesfully");
-      return result;
-    } catch (err) {
-      console.log(err.message);
-    }
+    const payload = {
+      patient: currentUser.profileId,
+      doctor: doctor.id,
+      date: data.date,
+      chiefComplaints: complainList,
+      polyclinic: polyclinic.id,
+      general_problems: data.general_problems.toString(),
+      // time: "12",
+      joint_related_problems: data.joint_related_problems.toString(),
+      neuro_problems: data.neuro_problems.toString(),
+      heart_problems: data.heart_problems.toString(),
+      blood_problems: data.blood_problems.toString(),
+      stomach_problems: data.stomach_problems.toString(),
+      mental_problems: data.mental_problems.toString(),
+      genetal_problems: data.genetal_problems.toString(),
+    };
+
+    const res = await axios.post(`${apiUrl}/appointments`, payload, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const result = res.data;
+    Router.push(
+      `/confirmation?appointmentId=${result.id}&&date=${result.date}`
+    );
+    return result;
   };
 
   if (!doctorId || !polyclinicId || !fee) {
     return (
-      <div>
-        <h2>no doctors selected</h2>
+      <div
+        style={{
+          height: "45vh",
+          width: "100%",
+
+          textAlign: "center",
+        }}
+      >
+        <div className="row">
+          <div className="col-md-4"></div>
+          <div
+            className="col-md-4"
+            style={{ marginTop: "200px", marginLeft: "45px" }}
+          >
+            <h1>Forbiden Page</h1>
+          </div>
+          <div className="col-md-4"></div>
+        </div>
       </div>
     );
   }
@@ -460,7 +476,7 @@ const Checkout = () => {
                                 <div className="accordion-body">
                                   <div className="form-check">
                                     {heartRelatedProblems.map((item, index) => (
-                                      <div>
+                                      <div key={index}>
                                         <input
                                           className="form-check-input"
                                           type="checkbox"
@@ -833,7 +849,7 @@ const Checkout = () => {
                     <div className="checkout-item-heading">
                       <p className="fs-5">Payment Option</p>
                     </div>
-                    <div className="row" {...register("paymentOption")}>
+                    <div className="row">
                       <div className="col-md-2">
                         <div className="payment-on-cash mb-4">
                           <input
@@ -841,7 +857,7 @@ const Checkout = () => {
                             type="radio"
                             name="paymentOption"
                             value="Cash on Clinic"
-                            checked
+                            defaultChecked
                           />
                         </div>
                       </div>
@@ -851,7 +867,7 @@ const Checkout = () => {
                         </label>
                       </div>
                     </div>
-                    <div className="Credit-payment-option">
+                    {/* <div className="Credit-payment-option">
                       <div className="row" {...register("paymentOption")}>
                         <div className="col-md-2">
                           <div className="payment-on-cash mb-4">
@@ -869,7 +885,7 @@ const Checkout = () => {
                           </label>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
                 <div className="checkout-payment-btn text-center mt-3">

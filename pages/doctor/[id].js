@@ -176,8 +176,8 @@ const DoctorDetails = () => {
                     <div className="desc-time-table">
                       <table className="table table-striped">
                         <tbody>
-                          {curElem.schedule.map((item) => (
-                            <tr>
+                          {curElem.schedule.map((item, index) => (
+                            <tr key={index}>
                               <td>{item.day}</td>
                               <td>
                                 {item.start_time} - {item.end_time}

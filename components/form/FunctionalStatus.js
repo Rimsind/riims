@@ -103,10 +103,10 @@ const FunctionalStatus = ({ patient }) => {
             style={{ color: "aliceblue" }}
           >
             <div className="row align-items-center">
-              <div className="col-md-9">Current Functional Status</div>
-              <div className="col-md-3">
+              <div className="col-md-12">Current Functional Status</div>
+              {/* <div className="col-md-3">
                 <span className="badge bg-warning"> Pending </span>
-              </div>
+              </div> */}
             </div>
           </button>
         </h2>

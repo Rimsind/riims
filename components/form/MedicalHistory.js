@@ -38,13 +38,13 @@ const MedicalHistory = ({ patient }) => {
             complicatedPregnancy: data.complicatedPregnancy,
             other: data.other,
           },
-          surgicalHistory: [
-            ...medicalHistory.surgicalHistory,
-            {
-              name: data.surgicalHistoryTitle,
-              date: data.surgicalHistoryDate,
-            },
-          ],
+          // surgicalHistory: [
+          //   ...medicalHistory.surgicalHistory,
+          //   {
+          //     name: data.surgicalHistoryTitle,
+          //     date: data.surgicalHistoryDate,
+          //   },
+          // ],
         },
       };
       // console.log(payload, "surgical history");
@@ -169,10 +169,10 @@ const MedicalHistory = ({ patient }) => {
             style={{ color: "aliceblue" }}
           >
             <div className="row align-items-center">
-              <div className="col-md-8">Medical History</div>
-              <div className="col-md-4">
+              <div className="col-md-12">Medical History</div>
+              {/* <div className="col-md-4">
                 <span className="badge bg-warning"> Pending </span>
-              </div>
+              </div> */}
             </div>
           </button>
         </h2>
@@ -510,7 +510,7 @@ const MedicalHistory = ({ patient }) => {
                   </div>
                 </div>
               </div>
-              <div
+              {/* <div
                 className="gen-form mb-3"
                 style={{ borderBottom: "1px solid #bbbaba" }}
               >
@@ -565,7 +565,7 @@ const MedicalHistory = ({ patient }) => {
                     </tbody>
                   </table>
                 </div>
-              </div>
+              </div> */}
 
               <div
                 className="gen-form mb-3"

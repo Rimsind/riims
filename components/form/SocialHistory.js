@@ -128,12 +128,12 @@ const SocialHistory = ({ patient }) => {
             style={{ color: "aliceblue" }}
           >
             <div className="row align-items-center">
-              <div className="col-md-10">
+              <div className="col-md-12">
                 Social History & Living Environment
               </div>
-              <div className="col-md-2">
+              {/* <div className="col-md-2">
                 <span className="badge bg-warning"> Pending </span>
-              </div>
+              </div> */}
             </div>
           </button>
         </h2>

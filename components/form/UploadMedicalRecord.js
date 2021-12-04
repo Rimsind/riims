@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { apiUrl } from "config/api";
 import axios from "axios";
 import { parseCookies } from "nookies";
+import Link from "next/link";
 
 const UploadMedicalRecord = ({ patient }) => {
   const { upload_medical_record } = patient;
@@ -57,10 +58,10 @@ const UploadMedicalRecord = ({ patient }) => {
             style={{ color: "aliceblue" }}
           >
             <div className="row align-items-center">
-              <div className="col-md-9">Upload Your Medical Record</div>
-              <div className="col-md-3">
+              <div className="col-md-12">Upload Your Medical Record</div>
+              {/* <div className="col-md-3">
                 <span className="badge bg-warning"> Pending </span>
-              </div>
+              </div> */}
             </div>
           </button>
         </h2>
@@ -130,7 +131,9 @@ const UploadMedicalRecord = ({ patient }) => {
                     <tr key={index}>
                       <td>{item.title}</td>
                       <td>
-                        <a href="/">Download</a>
+                        <Link href="/">
+                          <a>Download</a>
+                        </Link>
                       </td>
                     </tr>
                   ))}

@@ -12,7 +12,7 @@ const PatientHeader = ({ patient }) => {
                     <Image
                       height="40"
                       width="40"
-                      src="/images/doctors/doc.png"
+                      src="/images/profile.png"
                       className="img-fluid avatar avatar-ex-sm rounded"
                       alt=""
                     />

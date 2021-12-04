@@ -15,11 +15,11 @@ const PatientNavbar = () => {
                 </a>
               </Link>
             </li>
-            <li className="navbar-item custom-navbar-item">
+            {/* <li className="navbar-item custom-navbar-item">
               <Link href="/user/my-tests">
                 <a className="navbar-link custom-navbar-link">My Tests</a>
               </Link>
-            </li>
+            </li> */}
             <li className="navbar-item custom-navbar-item">
               <Link href="/user/my-orders">
                 <a className="navbar-link custom-navbar-link">
@@ -27,23 +27,23 @@ const PatientNavbar = () => {
                 </a>
               </Link>
             </li>
-            <li className="navbar-item custom-navbar-item">
+            {/* <li className="navbar-item custom-navbar-item">
               <Link href="/user/my-appointments">
                 <a className="navbar-link custom-navbar-link">
                   My Medicine Records
                 </a>
               </Link>
-            </li>
+            </li> */}
             {/* <li className="navbar-item custom-navbar-item">
               <Link href="/">
                 <a className="navbar-link custom-navbar-link">My Feedback</a>
               </Link>
             </li> */}
-            <li className="navbar-item custom-navbar-item">
+            {/* <li className="navbar-item custom-navbar-item">
               <Link href="/user/my-transaction">
                 <a className="navbar-link custom-navbar-link">My Payments</a>
               </Link>
-            </li>
+            </li> */}
             <li className="navbar-item custom-navbar-item">
               <Link href="/user/profile">
                 <a className="navbar-link custom-navbar-link">

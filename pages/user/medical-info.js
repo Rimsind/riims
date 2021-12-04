@@ -1,5 +1,4 @@
-import PatientHeader from "components/common/PatientHeader";
-import PatientNavbar from "components/common/PatientNavbar";
+import ProfileLayout from "components/layout/ProfileLayout";
 import {
   EmploymentStatus,
   FamilyMadicalHistory,
@@ -52,32 +51,24 @@ const MedicalInfo = () => {
   }
   return (
     <>
-      <section className="bg-dashboard my-lg-4">
-        <div className="container">
-          <div className="row justify-content-center">
-            <PatientNavbar />
-
-            <div className="col-xl-9 col-lg-9 col-md-9">
-              <PatientHeader />
-              <div className="card border-0 rounded shadow mt-3">
-                <div className="p-4">
-                  <div className="accordion" id="accordionExample">
-                    <GeneralInformation patient={data} />
-                    <SocialHistory patient={data} />
-                    <EmploymentStatus patient={data} />
-                    <MedicalHistory patient={data} />
-                    <FunctionalStatus patient={data} />
-                    <FamilyMadicalHistory patient={data} />
-                    <UploadMedicalRecord patient={data} />
-                  </div>
-                </div>
-              </div>
-            </div>
+      <div className="card border-0 rounded shadow mt-3">
+        <div className="p-4">
+          <div className="accordion" id="accordionExample">
+            <GeneralInformation patient={data} />
+            <SocialHistory patient={data} />
+            <EmploymentStatus patient={data} />
+            <MedicalHistory patient={data} />
+            <FunctionalStatus patient={data} />
+            <FamilyMadicalHistory patient={data} />
+            <UploadMedicalRecord patient={data} />
           </div>
         </div>
-      </section>
+      </div>
     </>
   );
 };
 
 export default MedicalInfo;
+MedicalInfo.getLayout = (MedicalInfo) => (
+  <ProfileLayout>{MedicalInfo}</ProfileLayout>
+);

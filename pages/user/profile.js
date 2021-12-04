@@ -1,5 +1,4 @@
-import PatientHeader from "components/common/PatientHeader";
-import PatientNavbar from "components/common/PatientNavbar";
+import ProfileLayout from "components/layout/ProfileLayout";
 import AddressInformation from "components/form/AddressInformation";
 import ProfileInformation from "components/form/ProfileInformation";
 import ProfilePicture from "components/form/ProfilePicture";
@@ -45,24 +44,14 @@ const Profile = () => {
 
   return (
     <>
-      <section className="bg-dashboard my-lg-4">
-        <div className="container">
-          <div className="row justify-content-center">
-            <PatientNavbar />
+      <ProfilePicture patient={data} />
 
-            <div className="col-xl-9 col-lg-9 col-md-9">
-              <PatientHeader patient={data} />
-              <ProfilePicture patient={data} />
+      <ProfileInformation patient={data} />
 
-              <ProfileInformation patient={data} />
-
-              <AddressInformation patient={data} />
-            </div>
-          </div>
-        </div>
-      </section>
+      <AddressInformation patient={data} />
     </>
   );
 };
 
 export default Profile;
+Profile.getLayout = (Profile) => <ProfileLayout>{Profile}</ProfileLayout>;
