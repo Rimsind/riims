@@ -37,8 +37,8 @@ const Index = () => {
                           id={curElem.id}
                           name={curElem.name}
                           image={curElem.coverImage?.url}
-                          street={curElem.address?.street_address}
-                          city={curElem.address?.city}
+                          street={curElem.street_address}
+                          city={curElem.city}
                           phone={curElem.phone}
                           email={curElem.email}
                         />
