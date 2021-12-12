@@ -5,6 +5,8 @@ import { apiUrl, fetcher } from "config/api";
 import useSWR from "swr";
 import Link from "next/link";
 import { ProfileCard } from "components/common";
+import LoadingError from "components/common/LoadingError";
+import Loading from "components/common/Loading";
 
 const DoctorDetails = () => {
   const router = useRouter();
@@ -17,19 +19,10 @@ const DoctorDetails = () => {
   } = useSWR(`${apiUrl}/polyclinics/${id}`, fetcher);
 
   if (loading) {
-    return (
-      <div>
-        <h1>loading ...</h1>
-      </div>
-    );
+    return <Loading />;
   }
-
   if (error) {
-    return (
-      <div>
-        <h1>Loading Error....</h1>
-      </div>
-    );
+    return <LoadingError />;
   }
 
   return (
@@ -126,13 +119,13 @@ const DoctorDetails = () => {
               <div className="row">
                 {polyclinic?.doctors.map((curElem) => (
                   <ProfileCard
-                    key={curElem.id}
-                    id={curElem.id}
-                    image={curElem.image.url}
-                    fName={curElem.firstName}
-                    lName={curElem.lastName}
-                    spec={curElem.specialty}
-                    experience={curElem.experienceInYrs}
+                    key={curElem?.id}
+                    id={curElem?.id}
+                    image={curElem?.image.url}
+                    fName={curElem?.firstName}
+                    lName={curElem?.lastName}
+                    spec={curElem?.specialty?.name}
+                    experience={curElem?.experienceInYrs}
                   />
                 ))}
               </div>

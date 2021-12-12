@@ -1,4 +1,5 @@
-import ProfileLayout from "components/layout/ProfileLayout";
+import PatientNavbar from "components/common/PatientNavbar";
+import PatientHeader from "components/common/PatientHeader";
 import {
   EmploymentStatus,
   FamilyMadicalHistory,
@@ -8,23 +9,22 @@ import {
   MedicalHistory,
   UploadMedicalRecord,
 } from "../../components/form/index";
-import { useEffect, useState } from "react";
+
 import { apiUrl } from "config/api";
 import axios from "axios";
 import useSWR from "swr";
-import { parseCookies } from "nookies";
+import { useAuth } from "context";
+import Script from "next/script";
 
 const MedicalInfo = () => {
-  const [token, setToken] = useState(null);
-
-  const [currentUser, setcurrentUser] = useState(null);
+  const { auth } = useAuth();
 
   const { data, loading, error } = useSWR(
-    `${apiUrl}/patients/${currentUser?.profileId}`,
+    `${apiUrl}/patients/${auth.user?.profileId}`,
     async (url) => {
       const res = await axios.get(url, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${auth.token}`,
         },
       });
       const result = res.data;
@@ -32,15 +32,6 @@ const MedicalInfo = () => {
     }
   );
   // console.log(data);
-
-  useEffect(() => {
-    const { token, user } = parseCookies();
-    if (token && user) {
-      setToken(token);
-      const userData = JSON.parse(user);
-      setcurrentUser(userData);
-    }
-  }, []);
 
   if (!data) {
     return (
@@ -51,24 +42,36 @@ const MedicalInfo = () => {
   }
   return (
     <>
-      <div className="card border-0 rounded shadow mt-3">
-        <div className="p-4">
-          <div className="accordion" id="accordionExample">
-            <GeneralInformation patient={data} />
-            <SocialHistory patient={data} />
-            <EmploymentStatus patient={data} />
-            <MedicalHistory patient={data} />
-            <FunctionalStatus patient={data} />
-            <FamilyMadicalHistory patient={data} />
-            <UploadMedicalRecord patient={data} />
+      <Script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossOrigin="anonymous"
+      ></Script>
+      <section className="bg-dashboard my-lg-4">
+        <div className="container">
+          <div className="row justify-content-center">
+            <PatientNavbar />
+            <div className="col-xl-9 col-lg-9 col-md-9">
+              <PatientHeader patient={data} />
+              <div className="card border-0 rounded shadow mt-3">
+                <div className="p-4">
+                  <div className="accordion" id="accordionExample">
+                    <GeneralInformation patient={data} />
+                    <SocialHistory patient={data} />
+                    <EmploymentStatus patient={data} />
+                    <MedicalHistory patient={data} />
+                    <FunctionalStatus patient={data} />
+                    <FamilyMadicalHistory patient={data} />
+                    <UploadMedicalRecord patient={data} />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 };
 
 export default MedicalInfo;
-MedicalInfo.getLayout = (MedicalInfo) => (
-  <ProfileLayout>{MedicalInfo}</ProfileLayout>
-);

@@ -1,4 +1,5 @@
 import Link from "next/link";
+
 const PatientNavbar = () => {
   return (
     <>
@@ -59,7 +60,7 @@ const PatientNavbar = () => {
               </Link>
             </li>
             <li className="navbar-item custom-navbar-item">
-              <Link href="/user/privacy-settings">
+              <Link href="/user/settings">
                 <a className="navbar-link custom-navbar-link">
                   Privacy & Settings
                 </a>

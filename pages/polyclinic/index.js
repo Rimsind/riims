@@ -1,11 +1,23 @@
 import { SearchBar } from "components/common";
+import LoadingError from "components/common/LoadingError";
 import Hero from "components/Hero";
 import PolyclinicCard from "components/PolyclinicCard";
 import { apiUrl, fetcher } from "config/api";
 import useSWR from "swr";
 
 const Index = () => {
-  const { data: polyclinics } = useSWR(`${apiUrl}/polyclinics`, fetcher);
+  const {
+    data: polyclinics,
+    loading,
+    error,
+  } = useSWR(`${apiUrl}/polyclinics`, fetcher);
+
+  if (loading) {
+    return <loading />;
+  }
+  if (error) {
+    return <LoadingError />;
+  }
   return (
     <>
       <Hero image="/images/bg/polyclinic-hero1.jpg" alt="Hero Image" />

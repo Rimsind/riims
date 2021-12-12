@@ -1,58 +1,37 @@
 import { useForm } from "react-hook-form";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { apiUrl } from "config/api";
-import { parseCookies } from "nookies";
+import { uploadImage } from "utils/uploadImage";
+import { useAuth } from "context";
 
 const ProfilePicture = ({ patient }) => {
-  const [token, setToken] = useState(null);
+  const { auth } = useAuth();
 
-  useEffect(() => {
-    const { token, user } = parseCookies();
-    if (token && user) {
-      setToken(token);
-    }
-  }, []);
+  const [loading, setLoading] = useState(false);
 
-  const [selectedImage, setSelectedImage] = useState(
-    patient.image?.url || "/images/profile.png"
-  );
-  const [imageFile, setImageFile] = useState(null);
+  const [profileImage, setProfileImage] = useState();
 
-  const profileImageHandler = (e) => {
-    e.preventDefault();
-    let file = e.target.files[0];
-    setImageFile(file);
-    setSelectedImage(URL.createObjectURL(file));
-  };
+  const uploadProfileImage = async () => {
+    setLoading(true);
+    const image = await uploadImage(profileImage, auth.token);
 
-  const uploadImage = async () => {
-    const formData = new FormData();
-    formData.append("files", imageFile);
-    console.log(formData);
-    // try {
-    //   const { url } = await uploadCloudinary(imageFile);
-    //   const res = await axios.put(
-    //     `${apiUrl}/patients/${patient.id}`,
-    //     {
-    //       image: formData,
-    //     },
-    //     {
-    //       headers: {
-    //         Authorization: `Bearer ${token}`,
-    //       },
-    //     }
-    //   );
-
-    //   const result = await res.data;
-    //   if (result.success) {
-    //     setSelectedImage(result.data.image);
-    //     alert("profile image updated");
-    //   }
-    // } catch (err) {
-    //   console.log(err.message);
-    // }
+    const payload = {
+      image,
+    };
+    const response = await axios.put(
+      `${apiUrl}/patients/${auth.user.profileId}`,
+      payload,
+      {
+        headers: {
+          Authorization: `Bearer ${auth.token}`,
+        },
+      }
+    );
+    const result = await response.data;
+    alert("Image uploaded succesfully");
+    setLoading(false);
   };
 
   return (
@@ -69,7 +48,7 @@ const ProfilePicture = ({ patient }) => {
             <Image
               height="250"
               width="250"
-              src={selectedImage}
+              src={patient?.image?.url || "/images/profile.png"}
               className=" rounded-circle"
               alt=""
             />
@@ -80,11 +59,12 @@ const ProfilePicture = ({ patient }) => {
               <div className="row">
                 <div className="col-md-8">
                   <input
-                    className="form-control"
                     type="file"
-                    name="profileImge"
-                    id="formFile"
-                    onChange={(e) => setImageFile(e.target.files[0])}
+                    className="form-control"
+                    placeholder="Upload your Image"
+                    name="uploadFile"
+                    required=""
+                    onChange={(e) => setProfileImage(e.target.files[0])}
                   />
                 </div>
                 <div className="col-md-4">
@@ -92,9 +72,15 @@ const ProfilePicture = ({ patient }) => {
                     className="submit-btn-item"
                     style={{ textAlign: "right" }}
                   >
-                    <button className="btn btn-primary" onClick={uploadImage}>
-                      Save Changes
-                    </button>
+                    <input
+                      type="submit"
+                      id="submit"
+                      name="send"
+                      className="btn btn-primary"
+                      value={loading ? "loading..." : "upload"}
+                      disabled={loading}
+                      onClick={uploadProfileImage}
+                    />
                   </div>
                 </div>
               </div>

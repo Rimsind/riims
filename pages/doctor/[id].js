@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import { apiUrl, fetcher } from "config/api";
+import LoadingError from "components/common/LoadingError";
+import Loading from "components/common/Loading";
 
 const DoctorDetails = () => {
   const router = useRouter();
@@ -15,15 +17,11 @@ const DoctorDetails = () => {
     loading,
   } = useSWR(`${apiUrl}/doctors/${id}`, fetcher);
   if (loading) {
-    return <div className="loader"></div>;
+    return <Loading />;
   }
 
   if (error) {
-    return (
-      <div>
-        <h1>Loading Error....</h1>
-      </div>
-    );
+    return <LoadingError />;
   }
 
   return (
@@ -67,7 +65,7 @@ const DoctorDetails = () => {
                           <li className="dr-ach">{doctor?.qualification}</li>
                           <li className="dr-exp">
                             {doctor?.experienceInYrs} years experience,
-                            Consultant {doctor?.specialty.name}
+                            Consultant {doctor?.specialty?.name}
                           </li>
                         </ul>
                         <p className="text-muted">Best Treatment Info</p>
@@ -108,7 +106,7 @@ const DoctorDetails = () => {
                         <Image
                           height="150"
                           width="150"
-                          src={curElem.polyclinic?.coverImage.url}
+                          src={curElem.polyclinic?.coverImage?.url}
                           className=" rounded-circle custom-pl-image"
                           alt=""
                         />
@@ -176,11 +174,11 @@ const DoctorDetails = () => {
                     <div className="desc-time-table">
                       <table className="table table-striped">
                         <tbody>
-                          {curElem.schedule.map((item, index) => (
+                          {curElem.schedule?.map((item, index) => (
                             <tr key={index}>
                               <td>{item.day}</td>
                               <td>
-                                {item.start_time} - {item.end_time}
+                                {item?.start_time} - {item?.end_time}
                               </td>
                             </tr>
                           ))}
@@ -193,7 +191,7 @@ const DoctorDetails = () => {
                       <p>
                         Fees <i className="ri-bank-card-line"></i>
                         <span className="fw-bold">
-                          Rs {curElem.fee && curElem.fee}
+                          Rs {curElem?.fee && curElem?.fee}
                         </span>
                       </p>
                     </div>

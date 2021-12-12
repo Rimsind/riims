@@ -1,47 +1,43 @@
-import { useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { apiUrl } from "config/api";
 import axios from "axios";
-import { parseCookies } from "nookies";
 import Link from "next/link";
+import { useAuth } from "context";
+import { uploadImage } from "utils/uploadImage";
 
 const UploadMedicalRecord = ({ patient }) => {
   const { upload_medical_record } = patient;
+  const { auth } = useAuth();
 
-  const [token, setToken] = useState(null);
-  const [currentUser, setCurrentUser] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [title, setTitle] = useState();
+  const [profileImage, setProfileImage] = useState();
 
-  useEffect(() => {
-    const { token, user } = parseCookies();
-    if (token && user) {
-      setToken(token);
-      const userData = JSON.parse(user);
-      setCurrentUser(userData);
-    }
-  }, []);
-
-  const { register, handleSubmit } = useForm();
-  const update_medical_records = async (data, event) => {
-    console.log(data.whereLive);
-    event.preventDefault();
-    try {
-      const payload = {};
-      console.log(payload, "payload");
-      const res = await axios.put(
-        `${apiUrl}/patients/${currentUser?.profileId}`,
-        payload,
+  const uploadProfileImage = async () => {
+    setLoading(true);
+    const image = await uploadImage(profileImage, auth.token);
+    const payload = {
+      upload_medical_record: [
+        ...upload_medical_record,
         {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      const result = res.data;
-      alert("Medical Records Updated Succesfully");
-      return result;
-    } catch (err) {
-      console.log(err.message);
-    }
+          title: title,
+          file: image,
+        },
+      ],
+    };
+    const response = await axios.put(
+      `${apiUrl}/patients/${auth.user.profileId}`,
+      payload,
+      {
+        headers: {
+          Authorization: `Bearer ${auth.token}`,
+        },
+      }
+    );
+    const result = await response.data;
+    alert("Image uploaded succesfully");
+    setLoading(false);
+    return result;
   };
 
   return (
@@ -72,10 +68,10 @@ const UploadMedicalRecord = ({ patient }) => {
           data-bs-parent="#accordionExample"
         >
           <div className="accordion-body text-muted">
-            <form onSubmit={handleSubmit(update_medical_records)}>
+            <form>
               <div className="gen-form mb-3">
                 <div className="row justify-centent-between align-items-center">
-                  <div className="col-md-6" {...register("fileTitle")}>
+                  <div className="col-md-6">
                     <div className="row">
                       <div className="col-md-4">
                         <label htmlFor="" className="form-label">
@@ -86,17 +82,22 @@ const UploadMedicalRecord = ({ patient }) => {
                         <input
                           type="text"
                           className="form-control"
-                          name="fileTitle"
+                          name="title"
                           placeholder="File Name"
+                          value={title}
+                          onChange={(e) => setTitle(e.target.value)}
                         />
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-6" {...register("uploadFile")}>
+                  <div className="col-md-6">
                     <input
                       type="file"
                       className="form-control"
+                      placeholder="Upload your Image"
                       name="uploadFile"
+                      required=""
+                      onChange={(e) => setProfileImage(e.target.files[0])}
                     />
                   </div>
                 </div>
@@ -105,9 +106,15 @@ const UploadMedicalRecord = ({ patient }) => {
                   className="right-button"
                   style={{ textAlign: "right", marginTop: "10px" }}
                 >
-                  <button type="submit" className="btn btn-success">
-                    Save Changes
-                  </button>
+                  <input
+                    type="submit"
+                    id="submit"
+                    name="send"
+                    className="btn btn-primary"
+                    value={loading ? "loading..." : "upload"}
+                    disabled={loading}
+                    onClick={uploadProfileImage}
+                  />
                 </div>
               </div>
               <div
@@ -131,8 +138,8 @@ const UploadMedicalRecord = ({ patient }) => {
                     <tr key={index}>
                       <td>{item.title}</td>
                       <td>
-                        <Link href="/">
-                          <a>Download</a>
+                        <Link href={item.file?.url}>
+                          <a target="_blank">Download</a>
                         </Link>
                       </td>
                     </tr>

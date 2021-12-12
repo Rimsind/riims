@@ -1,21 +1,10 @@
 import { useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
 import { apiUrl } from "config/api";
 import axios from "axios";
-import { parseCookies } from "nookies";
+import { useAuth } from "context";
 
 const AddressInformation = ({ patient }) => {
-  const [token, setToken] = useState(null);
-  const [currentUser, setCurrentUser] = useState(null);
-
-  useEffect(() => {
-    const { token, user } = parseCookies();
-    if (token && user) {
-      setToken(token);
-      const userData = JSON.parse(user);
-      setCurrentUser(userData);
-    }
-  }, []);
+  const { auth } = useAuth();
 
   const { register, handleSubmit } = useForm();
   const updateAddress = async (data, event) => {
@@ -32,11 +21,11 @@ const AddressInformation = ({ patient }) => {
       };
 
       const res = await axios.put(
-        `${apiUrl}/patients/${currentUser?.profileId}`,
+        `${apiUrl}/patients/${auth.user?.profileId}`,
         payload,
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${auth.token}`,
           },
         }
       );

@@ -1,14 +1,30 @@
 import Image from "next/image";
-
 import { ItemCard, ProfileCard } from "../components/common/index";
 import Link from "next/link";
 import { apiUrl, fetcher } from "config/api";
 import useSWR from "swr";
+import LoadingError from "components/common/LoadingError";
+import { useAuth } from "context";
 
 const Index = () => {
-  const { data: specialties } = useSWR(`${apiUrl}/specialties`, fetcher);
+  // const { auth } = useAuth();
+  // console.log(auth, "index auth");
+  const {
+    data: specialties,
+    loading,
+    error,
+  } = useSWR(`${apiUrl}/specialties`, fetcher);
   const { data: doctors } = useSWR(`${apiUrl}/doctors`, fetcher);
   const { data: polyclinics } = useSWR(`${apiUrl}/polyclinics`, fetcher);
+
+  if (loading) {
+    return <loading />;
+  }
+
+  if (error) {
+    return <LoadingError />;
+  }
+
   return (
     <>
       <section
@@ -184,7 +200,7 @@ const Index = () => {
                         <Image
                           height="100"
                           width="100"
-                          src={curElem.image.url}
+                          src={curElem.image?.url}
                           alt="Picture of the author"
                         />
                         <div className="card-body pt-0">
@@ -230,8 +246,8 @@ const Index = () => {
                   id={curElem.id}
                   fName={curElem.firstName}
                   lName={curElem.lastName}
-                  image={curElem.image.url}
-                  spec={curElem.specialty.name}
+                  image={curElem.image?.url}
+                  spec={curElem.specialty?.name}
                   fee={curElem.fee}
                 />
               );
@@ -268,7 +284,7 @@ const Index = () => {
                       <Image
                         height="260"
                         width="270"
-                        src={curElem.coverImage.url}
+                        src={curElem.coverImage?.url}
                         className="img-fluid"
                         alt=""
                       />
@@ -287,7 +303,7 @@ const Index = () => {
           </div>
         </div>
 
-        {/* <div className="container mt-100 mt-60">
+        <div className="container mt-100 mt-60">
           <div className="row align-items-lg-end">
             <div className="col-md-6">
               <div className="me-xl-3">
@@ -484,7 +500,7 @@ const Index = () => {
               </div>
             </div>
           </div>
-        </div> */}
+        </div>
       </section>
     </>
   );

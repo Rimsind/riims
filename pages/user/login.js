@@ -1,9 +1,9 @@
 import Link from "next/link";
-
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { setCookie } from "nookies";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
+import { useAuth } from "context";
 const Login = () => {
   const {
     register,
@@ -13,12 +13,18 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
+  const { redirect } = useRouter().query;
+
+  const { dispatchAuth } = useAuth();
+
   const onSubmit = async (data, e) => {
     e.preventDefault();
     if (!data.email || !data.password) {
       alert("please fill all data");
       return;
     }
+    dispatchAuth({ type: "AUTH_LOADING" });
+
     try {
       const payload = {
         identifier: data.email,
@@ -29,12 +35,8 @@ const Login = () => {
         payload
       );
       const result = res.data;
-      console.log(result);
 
       if (result.jwt && result.user.role.id === 1) {
-        //after login process
-        //storing jwt
-        // Set
         setCookie(null, "token", result.jwt, {
           maxAge: 30 * 24 * 60 * 60,
           path: "/",
@@ -43,14 +45,26 @@ const Login = () => {
           maxAge: 30 * 24 * 60 * 60,
           path: "/",
         });
+        dispatchAuth({
+          type: "LOGIN_SUCCESS",
+          payload: { token: result.jwt, user: result.user },
+        });
 
-        //reset form data
         reset();
         alert("login success");
-        Router.push("/user/profile");
+        if (redirect) {
+          Router.push(`/${redirect}`);
+        } else {
+          Router.push("/");
+        }
       }
-    } catch (err) {
-      console.log(err.message);
+    } catch (error) {
+      dispatchAuth({
+        type: "LOGIN_FAILED",
+        payload: error.message
+          ? error.message
+          : "Something went wrong, try agin",
+      });
       alert("login failed");
     }
   };

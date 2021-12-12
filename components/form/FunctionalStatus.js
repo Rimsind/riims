@@ -1,22 +1,11 @@
 import { useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
 import { apiUrl } from "config/api";
 import axios from "axios";
-import { parseCookies } from "nookies";
+import { useAuth } from "context";
 
 const FunctionalStatus = ({ patient }) => {
   const { functionalStatus } = patient;
-  const [token, setToken] = useState(null);
-  const [currentUser, setCurrentUser] = useState(null);
-
-  useEffect(() => {
-    const { token, user } = parseCookies();
-    if (token && user) {
-      setToken(token);
-      const userData = JSON.parse(user);
-      setCurrentUser(userData);
-    }
-  }, []);
+  const { auth } = useAuth();
 
   const { register, handleSubmit } = useForm();
   const updateFunctionalStatus = async (data, event) => {
@@ -36,11 +25,11 @@ const FunctionalStatus = ({ patient }) => {
       };
 
       const res = await axios.put(
-        `${apiUrl}/patients/${currentUser?.profileId}`,
+        `${apiUrl}/patients/${auth.user?.profileId}`,
         payload,
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${auth.token}`,
           },
         }
       );
@@ -151,7 +140,7 @@ const FunctionalStatus = ({ patient }) => {
                 <div className="row justify-centent-between align-items-start">
                   <div className="col-md-3">
                     <h3 className="fs-6 fs-bold text-dark">
-                      Difficulty with Walking / movement such as:
+                      Any Difficulty with Walking / movement such as:
                     </h3>
                   </div>
                   <div className="col-md-9">
@@ -194,7 +183,7 @@ const FunctionalStatus = ({ patient }) => {
                 <div className="row justify-centent-between align-items-start">
                   <div className="col-md-3">
                     <h3 className="fs-6 fs-bold text-dark">
-                      Difficulty with self-care activities such as:
+                      Any Difficulty with self-care activities such as:
                     </h3>
                   </div>
                   <div className="col-md-9">
@@ -237,7 +226,7 @@ const FunctionalStatus = ({ patient }) => {
                 <div className="row justify-centent-between align-items-start">
                   <div className="col-md-3">
                     <h3 className="fs-6 fs-bold text-dark">
-                      Difficulty with home management such as:
+                      Any Difficulty with home management such as:
                     </h3>
                   </div>
                   <div className="col-md-9">
@@ -280,7 +269,7 @@ const FunctionalStatus = ({ patient }) => {
                 <div className="row justify-centent-between align-items-start">
                   <div className="col-md-3">
                     <h3 className="fs-6 fs-bold text-dark">
-                      Difficulty with community and work activities such as:
+                      Any Difficulty with community and work activities such as:
                     </h3>
                   </div>
                   <div className="col-md-9">

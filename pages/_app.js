@@ -8,13 +8,19 @@ import "../public/css/materialdesignicons.min.css";
 import "../public/css/remixicon.css";
 import "../public/css/style.css";
 import "../public/css/bootstrap.min.css";
-import Head from "next/head";
+import GlobalProvider from "context";
 
-export default function MyApp({ Component, pageProps }) {
-  const getLayout = Component.getLayout || ((page) => <Layout>{page}</Layout>);
-
-  return getLayout(<Component {...pageProps} />);
+function MyApp({ Component, pageProps }) {
+  return (
+    <GlobalProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </GlobalProvider>
+  );
 }
+
+export default MyApp;
 
 if (typeof window === "object") {
   // Check if document is finally loaded

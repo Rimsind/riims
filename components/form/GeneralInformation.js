@@ -1,23 +1,12 @@
 import { useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
 import { apiUrl } from "config/api";
 import axios from "axios";
-import { parseCookies } from "nookies";
+import { useAuth } from "context";
 
 const GeneralInformation = ({ patient }) => {
   const { generalInformation } = patient;
 
-  const [token, setToken] = useState(null);
-  const [currentUser, setCurrentUser] = useState(null);
-
-  useEffect(() => {
-    const { token, user } = parseCookies();
-    if (token && user) {
-      setToken(token);
-      const userData = JSON.parse(user);
-      setCurrentUser(userData);
-    }
-  }, []);
+  const { auth } = useAuth();
 
   const { register, handleSubmit } = useForm();
   const updateGeneralInformation = async (data, event) => {
@@ -33,11 +22,11 @@ const GeneralInformation = ({ patient }) => {
       };
 
       const res = await axios.put(
-        `${apiUrl}/patients/${currentUser?.profileId}`,
+        `${apiUrl}/patients/${auth.user?.profileId}`,
         payload,
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${auth.token}`,
           },
         }
       );
@@ -252,14 +241,32 @@ const GeneralInformation = ({ patient }) => {
                               ? generalInformation.language
                               : ""}
                           </option>
+                          <option value="Englisg" name="language">
+                            Englisg
+                          </option>
+                          <option value="Hindi" name="language">
+                            Hindi
+                          </option>
                           <option value="Bengali" name="language">
                             Bengali
                           </option>
-                          <option value="French" name="language">
-                            French
+                          <option value="Marathi" name="language">
+                            Marathi
                           </option>
-                          <option value="English" name="language">
-                            English
+                          <option value="Telugu" name="language">
+                            Telugu
+                          </option>
+                          <option value="Tamil" name="language">
+                            Tamil
+                          </option>
+                          <option value="Gujarati" name="language">
+                            Gujarati
+                          </option>
+                          <option value="Urdu" name="language">
+                            Urdu
+                          </option>
+                          <option value="Kannada" name="language">
+                            Kannada
                           </option>
                         </select>
                       </div>

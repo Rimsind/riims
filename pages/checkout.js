@@ -1,5 +1,4 @@
 import Image from "next/image";
-// import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import useSWR from "swr";
@@ -8,7 +7,7 @@ import { parseCookies } from "nookies";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Router from "next/router";
-import Script from "next/script";
+// import Script from "next/script";
 
 const Checkout = () => {
   const { doctorId, polyclinicId, fee } = useRouter().query;
@@ -42,6 +41,9 @@ const Checkout = () => {
       setToken(token);
       const userData = JSON.parse(user);
       setCurrentUser(userData);
+    } else {
+      Router.push(`/user/login?redirect=doctor/${doctorId}`);
+      alert("Please Login first");
     }
   }, []);
 
@@ -105,7 +107,7 @@ const Checkout = () => {
 
   const generalProblems = [
     "Fever",
-    "Childs",
+    "Chills",
     "Sweating",
     "Excessive weight loss",
     "Excessive weight gain",
@@ -146,12 +148,15 @@ const Checkout = () => {
   ];
 
   const bloodRelatedProblems = [
-    "Skin color change",
-    "Nail beet change",
-    "Nose bleeding",
-    "Gums bleeding",
-    "Headache",
-    "Inritability",
+    "Chest Discomfort",
+    "Nausea",
+    "Indigestion",
+    "Heart Burn",
+    "Stomach pain",
+    "Pain spreading to the Arm",
+    "Feeling of lightheadness/dizzi/Loosing balance/fainting",
+    "Throat/Jaw pain",
+    "",
   ];
 
   const stomachAdbdominalProblems = [
@@ -180,11 +185,6 @@ const Checkout = () => {
 
   return (
     <>
-      <Script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossOrigin="anonymous"
-      ></Script>
       <section className="bg-dashboard my-lg-4">
         <div className="container">
           <form onSubmit={handleSubmit(checkout)}>
@@ -607,7 +607,7 @@ const Checkout = () => {
                                             className="form-check-label"
                                             htmlFor="flexCheckDefault"
                                           >
-                                            A{item}
+                                            {item}
                                           </label>
                                         </div>
                                       )
@@ -895,9 +895,6 @@ const Checkout = () => {
                   </div>
                 </div>
                 <div className="checkout-payment-btn text-center mt-3">
-                  {/* <Link href="/confirmation">
-                    <a className="btn btn-primary">Book Now</a>
-                  </Link> */}
                   <button type="submit" className="btn btn-primary">
                     Book Now
                   </button>
