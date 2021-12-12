@@ -114,7 +114,7 @@ const FunctionalStatus = ({ patient }) => {
                 >
                   <div className="col-md-3">
                     <h3 className="fs-6 fs-bold text-dark">
-                      Current Functional Status:
+                      Any dufficulty with current Functional Mobility:
                     </h3>
                   </div>
                   <div className="col-md-9">
