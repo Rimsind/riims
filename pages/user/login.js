@@ -89,7 +89,7 @@ const Login = () => {
                     <div className="row">
                       <div className="col-md-6">
                         <div className="login-doctor">
-                          <Link href="/doctor/login">
+                          <Link href="https://doctor.rimsind.com/">
                             <a>Login as Doctor</a>
                           </Link>
                         </div>

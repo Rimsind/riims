@@ -104,7 +104,7 @@ const Signup = () => {
                     <div className="row">
                       <div className="col-md-6">
                         <div className="login-doctor">
-                          <Link href="/doctor/signup">
+                          <Link href="https://doctor.rimsind.com/signup">
                             <a>Signup as Doctor</a>
                           </Link>
                         </div>

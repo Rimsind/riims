@@ -49,7 +49,8 @@ const DoctorDetails = () => {
                       </div>
                       <div className="dr-button mt-4">
                         <a href="#" className="btn btn-primary">
-                          <i className="ri-skype-line"></i> Skype Id: #123456789
+                          <i className="ri-skype-line"></i> Skype Id:{" "}
+                          {doctor?.skype_id}
                         </a>
                       </div>
                     </div>
@@ -119,10 +120,7 @@ const DoctorDetails = () => {
                         <h3 className="fs-5">
                           {curElem.polyclinic?.name && curElem.polyclinic?.name}
                         </h3>
-                        <p className="text-muted">
-                          {/* {curElem.polyclinic?.address.city &&
-                            curElem.polyclinic?.address.city} */}
-                        </p>
+
                         <div className="row">
                           <div className="col-md-1">
                             <div className="pin-icon">
@@ -131,13 +129,13 @@ const DoctorDetails = () => {
                           </div>
                           <div className="col-md-11">
                             <p>
-                              {/* {curElem.polyclinic?.address?.street_address &&
-                                curElem.polyclinic?.address?.street_address}
+                              {curElem.polyclinic?.street_address &&
+                                curElem.polyclinic?.street_address}
                               ,
-                              {curElem.polyclinic.address.city &&
-                                curElem.polyclinic.address.city}
-                              {curElem.polyclinic.address.pincode &&
-                                curElem.polyclinic.address.pincode} */}
+                              {curElem.polyclinic?.city &&
+                                curElem.polyclinic?.city}
+                              {curElem.polyclinic?.pincode &&
+                                curElem.polyclinic?.pincode}
                             </p>
                           </div>
                         </div>

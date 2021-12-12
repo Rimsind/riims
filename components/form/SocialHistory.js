@@ -303,7 +303,7 @@ const SocialHistory = ({ patient }) => {
                   </div>
                   <div className="col-md-9">
                     <div className="row">
-                      <div className="col-md-6" {...register("homeStepsOut")}>
+                      <div className="col-md-6">
                         <div className="row">
                           <div className="col-md-8">
                             <p className="space-x-4">
@@ -315,7 +315,7 @@ const SocialHistory = ({ patient }) => {
                               type="number"
                               className="form-control"
                               name="homeStepsOut"
-                              placeholder="0"
+                              {...register("homeStepsOut")}
                               defaultValue={
                                 !!socialHistory && !!socialHistory.homeStepsOut
                                   ? socialHistory.homeStepsOut
@@ -325,7 +325,7 @@ const SocialHistory = ({ patient }) => {
                           </div>
                         </div>
                       </div>
-                      <div className="col-md-6" {...register("homeStepsIn")}>
+                      <div className="col-md-6">
                         <div className="row">
                           <div className="col-md-8">
                             <p className="space-x-4">
@@ -337,7 +337,7 @@ const SocialHistory = ({ patient }) => {
                               type="number"
                               className="form-control"
                               name="homeStepsIn"
-                              placeholder="0"
+                              {...register("homeStepsIn")}
                               defaultValue={
                                 !!socialHistory && !!socialHistory.homeStepsIn
                                   ? socialHistory.homeStepsIn
@@ -467,6 +467,25 @@ const SocialHistory = ({ patient }) => {
                             </div>
                           </div>
                         </div>
+                        {/* <div className="col-md-3" {...register("smokeTobacco")}>
+                          <div className="row">
+                            <div className="col-md-2">
+                              <input
+                                className="form-check-input"
+                                type="radio"
+                                name="smokeTobacco"
+                                value="Occasionaly"
+                                defaultChecked={
+                                  !!socialHistory &&
+                                  socialHistory.smokeTobacco === "Occasionaly"
+                                }
+                              />
+                            </div>
+                            <div className="col-md-10">
+                              <p className="space-x-4">Occasionaly</p>
+                            </div>
+                          </div>
+                        </div> */}
                         <div className="col-md-3" {...register("smokeTobacco")}>
                           <div className="row">
                             <div className="col-md-2">
@@ -537,7 +556,7 @@ const SocialHistory = ({ patient }) => {
                             </div>
                           </div>
                         </div>
-                        <div className="col-md-3" {...register("drinkAlcohol")}>
+                        <div className="col-md-3">
                           <div className="row">
                             <div className="col-md-2">
                               <input
@@ -545,6 +564,7 @@ const SocialHistory = ({ patient }) => {
                                 type="radio"
                                 name="drinkAlcohol"
                                 value="Occasionaly"
+                                {...register("drinkAlcohol")}
                                 defaultChecked={
                                   !!socialHistory &&
                                   socialHistory.drinkAlcohol === "Occasionaly"
@@ -556,7 +576,7 @@ const SocialHistory = ({ patient }) => {
                             </div>
                           </div>
                         </div>
-                        <div className="col-md-3" {...register("drinkAlcohol")}>
+                        <div className="col-md-3">
                           <div className="row">
                             <div className="col-md-2">
                               <input
@@ -564,6 +584,7 @@ const SocialHistory = ({ patient }) => {
                                 type="radio"
                                 name="drinkAlcohol"
                                 value="Socialy"
+                                {...register("drinkAlcohol")}
                                 defaultChecked={
                                   !!socialHistory &&
                                   socialHistory.drinkAlcohol === "Socialy"
@@ -575,7 +596,7 @@ const SocialHistory = ({ patient }) => {
                             </div>
                           </div>
                         </div>
-                        <div className="col-md-3" {...register("drinkAlcohol")}>
+                        <div className="col-md-3">
                           <div className="row">
                             <div className="col-md-2">
                               <input
@@ -583,6 +604,7 @@ const SocialHistory = ({ patient }) => {
                                 type="radio"
                                 name="drinkAlcohol"
                                 value="Heavily"
+                                {...register("drinkAlcohol")}
                                 defaultChecked={
                                   !!socialHistory &&
                                   socialHistory.drinkAlcohol === "Heavily"
@@ -605,7 +627,7 @@ const SocialHistory = ({ patient }) => {
                     </div>
                     <div className="col-md-9">
                       <div className="row">
-                        <div className="col-md-3" {...register("exercise")}>
+                        <div className="col-md-3">
                           <div className="row">
                             <div className="col-md-2">
                               <input
@@ -613,6 +635,7 @@ const SocialHistory = ({ patient }) => {
                                 type="radio"
                                 name="exercise"
                                 value="No"
+                                {...register("exercise")}
                                 defaultChecked={
                                   !!socialHistory &&
                                   socialHistory.exercise === "No"
@@ -632,6 +655,7 @@ const SocialHistory = ({ patient }) => {
                                 type="radio"
                                 name="exercise"
                                 value="Yes"
+                                {...register("exercise")}
                                 defaultChecked={
                                   !!socialHistory &&
                                   socialHistory.exercise === "Yes"

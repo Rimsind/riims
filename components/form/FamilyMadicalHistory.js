@@ -7,7 +7,7 @@ const FamilyMadicalHistory = ({ patient }) => {
   const { familyHistory } = patient;
   const { auth } = useAuth();
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const updateFamilyHistory = async (data, event) => {
     event.preventDefault();
     try {
@@ -34,6 +34,7 @@ const FamilyMadicalHistory = ({ patient }) => {
         }
       );
       const result = res.data;
+      reset();
       alert("FamilyMedical History Updated Succesfully");
       return result;
     } catch (err) {
@@ -117,6 +118,7 @@ const FamilyMadicalHistory = ({ patient }) => {
                           type="text"
                           className="form-control"
                           name="age_if_living"
+                          defaultValue="0"
                           {...register("age_if_living")}
                         />
                       </div>
@@ -136,6 +138,7 @@ const FamilyMadicalHistory = ({ patient }) => {
                           type="text"
                           className="form-control"
                           name="age_if_death"
+                          defaultValue="0"
                           {...register("age_if_death")}
                         />
                       </div>
@@ -153,6 +156,7 @@ const FamilyMadicalHistory = ({ patient }) => {
                           type="text"
                           className="form-control"
                           name="cause_of_death"
+                          defaultValue="NA"
                           {...register("cause_of_death")}
                         />
                       </div>

@@ -1,48 +1,37 @@
 import Link from "next/link";
 import Image from "next/image";
-// import { parseCookies, destroyCookie } from "nookies";
-// import { useEffect, useState, useContext } from "react";
-// import useSWR from "swr";
-// import { apiUrl } from "config/api";
-// import { useAuth } from "context";
-// import { GlobalContext } from "context";
+import { parseCookies, destroyCookie } from "nookies";
+import { useEffect, useState, useContext } from "react";
+import useSWR from "swr";
+import { apiUrl } from "config/api";
 
 const Navbar = () => {
-  // const context = useContext(GlobalContext);
-  // console.log(context, "ctx");
-  // const [token, setToken] = useState(null);
+  const [token, setToken] = useState(null);
 
-  // const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
 
-  // useEffect(() => {
-  //   const { token, user } = parseCookies();
-  //   if (token && user) {
-  //     setToken(token);
-  //     const userData = JSON.parse(user);
-  //     setCurrentUser(userData);
-  //   }
-  // }, []);
+  useEffect(() => {
+    const { token, user } = parseCookies();
+    if (token && user) {
+      setToken(token);
+      const userData = JSON.parse(user);
+      setCurrentUser(userData);
+    }
+  }, []);
 
-  // const { data, loading, error } = useSWR(
-  //   `${apiUrl}/patients/${currentUser?.profileId}`,
-  //   async (url) => {
-  //     const res = await axios.get(url, {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     });
-  //     const result = res.data;
-  //     return result;
-  //   }
-  // );
+  const { data, loading, error } = useSWR(
+    `${apiUrl}/patients/${currentUser?.profileId}`,
+    async (url) => {
+      const res = await axios.get(url, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const result = res.data;
+      return result;
+    }
+  );
 
-  // const { dispatchAuth } = useAuth();
-
-  // const logOutHandler = () => {
-  //   destroyCookie("token");
-  //   destroyCookie("user");
-  //   dispatchAuth({ type: "LOGOUT" });
-  // };
   return (
     <>
       <header
@@ -88,7 +77,7 @@ const Navbar = () => {
                   <Image
                     height="50"
                     width="50"
-                    src="/images/profile.png"
+                    src={data?.image?.url || "/images/profile.png"}
                     className="avatar avatar-ex-small rounded-circle"
                     alt=""
                   />
@@ -105,7 +94,7 @@ const Navbar = () => {
                     <Image
                       height="50"
                       width="50"
-                      src="/images/profile.png"
+                      src={data?.image?.url || "/images/profile.png"}
                       className="avatar avatar-md-sm rounded-circle"
                       alt=""
                     />

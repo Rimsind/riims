@@ -2,12 +2,14 @@ import { useForm } from "react-hook-form";
 import { apiUrl } from "config/api";
 import axios from "axios";
 import { useAuth } from "context";
+import { useState } from "react";
 
 const ProfileInformation = ({ patient }) => {
   const { auth } = useAuth();
-
+  const [loading, setLoading] = useState(false);
   const { register, handleSubmit } = useForm();
   const updateProfile = async (data, event) => {
+    setLoading(true);
     event.preventDefault();
     try {
       const payload = {
@@ -32,6 +34,7 @@ const ProfileInformation = ({ patient }) => {
         }
       );
       const result = res.data;
+      setLoading(false);
       alert("Profile Updated Succesfully");
       return result;
     } catch (err) {
@@ -159,7 +162,7 @@ const ProfileInformation = ({ patient }) => {
                   <option
                     name="blood_group"
                     defaultValue={
-                      !!patient.blood_group?.name && patient.blood_group?.name
+                      !!patient.blood_group?.id && patient.blood_group?.id
                     }
                   >
                     {!!patient.blood_group?.name && patient.blood_group?.name}
@@ -222,7 +225,12 @@ const ProfileInformation = ({ patient }) => {
           </div>
           <div className="col-sm-12">
             <div className="submit-btn-item" style={{ textAlign: "right" }}>
-              <button type="submit" className="btn btn-primary">
+              <button
+                type="submit"
+                className="btn btn-primary"
+                value={loading ? "loading..." : "Save Changes"}
+                disabled={loading}
+              >
                 Save Changes
               </button>
             </div>

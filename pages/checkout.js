@@ -3,14 +3,14 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import { apiUrl, fetcher } from "config/api";
-import { parseCookies } from "nookies";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import Router from "next/router";
-// import Script from "next/script";
+import { useAuth } from "context";
 
 const Checkout = () => {
-  const { doctorId, polyclinicId, fee } = useRouter().query;
+  const { doctorId, polyclinicId, fee, schedule } = useRouter().query;
+  console.log(schedule);
   const { data: doctor } = useSWR(`${apiUrl}/doctors/${doctorId}`, fetcher);
   const { data: polyclinic } = useSWR(
     `${apiUrl}/polyclinics/${polyclinicId}`,
@@ -32,33 +32,19 @@ const Checkout = () => {
     setDuration("");
   };
 
-  const [token, setToken] = useState(null);
-  const [currentUser, setCurrentUser] = useState(null);
-
-  useEffect(() => {
-    const { token, user } = parseCookies();
-    if (token && user) {
-      setToken(token);
-      const userData = JSON.parse(user);
-      setCurrentUser(userData);
-    } else {
-      Router.push(`/user/login?redirect=doctor/${doctorId}`);
-      alert("Please Login first");
-    }
-  }, []);
+  const { auth } = useAuth();
 
   const { register, handleSubmit } = useForm();
   const checkout = async (data, event) => {
     event.preventDefault();
 
     const payload = {
-      patient: currentUser.profileId,
+      patient: auth.user.profileId,
       doctor: doctor.id,
       date: data.date,
       chiefComplaints: complainList,
       polyclinic: polyclinic.id,
       general_problems: data.general_problems.toString(),
-      // time: "12",
       joint_related_problems: data.joint_related_problems.toString(),
       neuro_problems: data.neuro_problems.toString(),
       heart_problems: data.heart_problems.toString(),
@@ -70,7 +56,7 @@ const Checkout = () => {
 
     const res = await axios.post(`${apiUrl}/appointments`, payload, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${auth.token}`,
       },
     });
 
@@ -123,7 +109,7 @@ const Checkout = () => {
   ];
 
   const rehumatologic = [
-    "Joint swelling",
+    " Joint swelling",
     "Muscle pain",
     "Muscle Weakness",
     "Skin Rashes",
@@ -135,41 +121,43 @@ const Checkout = () => {
     "Pain spreading from one place to another",
     "Visibility problems",
     "Dinginess",
-    "Numbness or burnins fedings",
+    "Numbness or burnings feedings",
   ];
 
   const heartRelatedProblems = [
     "Chest pain",
     "Fast heart beat",
     "Heavy cough",
-    "Clavdication ( leg pain cramps )",
+    "Claudication (leg pain cramps)",
     "Shortness of breath",
-    "Difficultty in walking",
+    "Difficulty in walking",
+    "Feeling of tiredness easily",
+    "Snoring a lot & Sweating a lot",
+    "Coughing a lot ",
+    "Swollen leg ankle and feet",
+    "Heart is beating fast ",
   ];
 
   const bloodRelatedProblems = [
-    "Chest Discomfort",
-    "Nausea",
-    "Indigestion",
-    "Heart Burn",
-    "Stomach pain",
-    "Pain spreading to the Arm",
-    "Feeling of lightheadness/dizzi/Loosing balance/fainting",
-    "Throat/Jaw pain",
-    "",
+    "Skin color change",
+    "Nail beet change",
+    "Nose bleeding",
+    "Gums bleeding",
+    "Headache",
+    "Irritability",
   ];
 
   const stomachAdbdominalProblems = [
     "Abdominal pain",
     "Vomiting",
     "Difficulty in swallowing",
-    "Diarrea",
+    "Diarrhea",
     "Heart burn",
   ];
 
   const mentalProblems = [
-    "Stres leaves",
-    "Sleeping problem",
+    "High Stress Level",
+    "Sleeping problems",
     "Depression",
     "Confusion",
     "Anxiety",
@@ -208,9 +196,9 @@ const Checkout = () => {
                             {...register("date")}
                           />
                         </div>
-                        <div className="col-md-6">
+                        {/* <div className="col-md-6">
                           <h6>Visiting Hour: 10:00 A.M to 11:00 A.M.</h6>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </div>
@@ -810,8 +798,8 @@ const Checkout = () => {
                       </div>
                       <div className="col-md-11">
                         <span>
-                          {polyclinic?.address.street_address},
-                          {polyclinic?.address.city},{polyclinic?.address.state}
+                          {polyclinic?.street_address},{polyclinic?.city},
+                          {polyclinic?.state}
                         </span>
                       </div>
                     </div>
