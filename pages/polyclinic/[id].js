@@ -61,10 +61,9 @@ const DoctorDetails = () => {
                         </div>
                         <div className="col-md-11">
                           <p>
-                            {polyclinic?.address?.street_address},
-                            {polyclinic?.address?.city}, <br />
-                            {polyclinic?.address?.state?.name}, Pin -
-                            {polyclinic?.address?.pincode}
+                            {polyclinic?.street_address},{polyclinic?.city}
+                            <br />
+                            {polyclinic?.state}, Pin -{polyclinic?.pincode}
                           </p>
                         </div>
                       </div>
