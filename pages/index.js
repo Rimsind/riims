@@ -4,11 +4,8 @@ import Link from "next/link";
 import { apiUrl, fetcher } from "config/api";
 import useSWR from "swr";
 import LoadingError from "components/common/LoadingError";
-import { useAuth } from "context";
 
 const Index = () => {
-  // const { auth } = useAuth();
-  // console.log(auth, "index auth");
   const {
     data: specialties,
     loading,
