@@ -9,6 +9,7 @@ import axios from "axios";
 import useSWR from "swr";
 
 import { useAuth } from "context";
+import Loading from "components/common/Loading";
 
 const Profile = () => {
   const { auth } = useAuth();
@@ -27,11 +28,7 @@ const Profile = () => {
   );
 
   if (!data) {
-    return (
-      <div>
-        <h2>loading...</h2>
-      </div>
-    );
+    return <Loading />;
   }
 
   return (

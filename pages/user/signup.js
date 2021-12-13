@@ -83,6 +83,7 @@ const Signup = () => {
       reset();
       router.push("/user/login");
     } catch (err) {
+      alert("Registration Failed");
       console.log(err.message);
     }
   };

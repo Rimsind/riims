@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { parseCookies, destroyCookie } from "nookies";
-import { useEffect, useState, useContext } from "react";
+import { parseCookies } from "nookies";
+import { useEffect, useState } from "react";
 import useSWR from "swr";
 import { apiUrl } from "config/api";
 
@@ -99,7 +99,9 @@ const Navbar = () => {
                       alt=""
                     />
                     <div className="flex-1 ms-2">
-                      <span className="d-block mb-1">Amit Mahapatra</span>
+                      <span className="d-block mb-1">
+                        {data?.first_name} {data?.last_name}
+                      </span>
                     </div>
                   </a>
                   <Link href="/user/profile">

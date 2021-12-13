@@ -32,7 +32,15 @@ const Confirmation = () => {
               </div>
               <div className="back-to-home-btn text-center mt-4">
                 <Link href="/">
-                  <a className="btn btn-secondary">Back to Home</a>
+                  <a
+                    className="btn btn-secondary"
+                    style={{ marginRight: "8px" }}
+                  >
+                    Back to Home
+                  </a>
+                </Link>
+                <Link href="/user/profile">
+                  <a className="btn btn-secondary">Back to Profile</a>
                 </Link>
               </div>
             </div>

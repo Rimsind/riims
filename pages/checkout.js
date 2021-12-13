@@ -33,10 +33,18 @@ const Checkout = () => {
   };
 
   const { auth } = useAuth();
+  console.log(auth);
+  if (!auth.token && !auth.user) {
+    Router.push(`/user/login?redirect=doctor/${doctorId}`);
+  }
 
   const { register, handleSubmit } = useForm();
   const checkout = async (data, event) => {
     event.preventDefault();
+    if (!data.date) {
+      alert("Please Select a date");
+      return;
+    }
 
     const payload = {
       patient: auth.user.profileId,
@@ -120,7 +128,7 @@ const Checkout = () => {
     "Headaches",
     "Pain spreading from one place to another",
     "Visibility problems",
-    "Dinginess",
+    "Dizziness",
     "Numbness or burnings feedings",
   ];
 
@@ -140,7 +148,7 @@ const Checkout = () => {
 
   const bloodRelatedProblems = [
     "Skin color change",
-    "Nail beet change",
+    "Nail bed change",
     "Nose bleeding",
     "Gums bleeding",
     "Headache",
