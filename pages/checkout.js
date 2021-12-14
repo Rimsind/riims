@@ -32,9 +32,11 @@ const Checkout = () => {
   };
 
   const { auth } = useAuth();
-  console.log(auth);
-  if (!auth.token && !auth.user)
-    Router.push(`/user/login?redirect=doctor/${doctorId}`);
+
+  if (!auth.token && !auth.user) {
+    Router.push("/login");
+  }
+  // Router.push(`/user/login?redirect=doctor/${doctorId}`);
 
   const { register, handleSubmit } = useForm();
   const checkout = async (data, event) => {

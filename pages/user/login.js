@@ -13,7 +13,7 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const { redirect } = useRouter().query;
+  // const { redirect } = useRouter().query;
 
   const { dispatchAuth } = useAuth();
 
@@ -52,11 +52,11 @@ const Login = () => {
 
         reset();
         alert("login success");
-        if (redirect) {
-          Router.push(`/${redirect}`);
-        } else {
-          Router.push("/");
-        }
+        // if (redirect) {
+        //   Router.push(`/${redirect}`);
+        // } else {
+        //   Router.push("/");
+        // }
       }
     } catch (error) {
       dispatchAuth({
