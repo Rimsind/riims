@@ -52,6 +52,7 @@ const Login = () => {
 
         reset();
         alert("login success");
+        Router.push("/");
         // if (redirect) {
         //   Router.push(`/${redirect}`);
         // } else {
