@@ -6,9 +6,9 @@ import { apiUrl, fetcher } from "config/api";
 import { useState } from "react";
 import axios from "axios";
 import { useAuth } from "context";
-import Router from "next/router";
 
 const Checkout = () => {
+  const router = useRouter();
   const { doctorId, polyclinicId, fee } = useRouter().query;
   const { data: doctor } = useSWR(`${apiUrl}/doctors/${doctorId}`, fetcher);
   const { data: polyclinic } = useSWR(
@@ -33,7 +33,7 @@ const Checkout = () => {
 
   const { auth } = useAuth();
   if (!auth.token && !auth.user) {
-    Router.push(`/user/login?redirect=doctor/${doctorId}`);
+    router.push(`/user/login?redirect=doctor/${doctorId}`);
   }
 
   const { register, handleSubmit } = useForm();
@@ -67,7 +67,7 @@ const Checkout = () => {
     });
 
     const result = res.data;
-    Router.push(
+    router.push(
       `/confirmation?appointmentId=${result.id}&&date=${result.date}`
     );
     return result;

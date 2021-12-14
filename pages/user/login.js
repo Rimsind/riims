@@ -4,13 +4,12 @@ import axios from "axios";
 import { setCookie } from "nookies";
 import { useRouter } from "next/router";
 import { useAuth } from "context";
-import Router from "next/router";
 const Login = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     reset,
-
     formState: { errors },
   } = useForm();
 
@@ -54,9 +53,9 @@ const Login = () => {
         reset();
         alert("login success");
         if (redirect) {
-          Router.push(`/${redirect}`);
+          router.push(`/${redirect}`);
         } else {
-          Router.push("/");
+          router.push("/");
         }
       }
     } catch (error) {
