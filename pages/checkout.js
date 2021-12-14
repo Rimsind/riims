@@ -3,12 +3,12 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import { apiUrl, fetcher } from "config/api";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
-import { parseCookies } from "nookies";
+import Router from "next/router";
+import { useAuth } from "context";
 
 const Checkout = () => {
-  const router = useRouter();
   const { doctorId, polyclinicId, fee } = useRouter().query;
   const { data: doctor } = useSWR(`${apiUrl}/doctors/${doctorId}`, fetcher);
   const { data: polyclinic } = useSWR(
@@ -31,22 +31,10 @@ const Checkout = () => {
     setDuration("");
   };
 
-  const [token, setToken] = useState(null);
-
-  const [currentUser, setCurrentUser] = useState(null);
-
-  useEffect(() => {
-    const { token, user } = parseCookies();
-    if (token && user) {
-      setToken(token);
-      const userData = JSON.parse(user);
-      setCurrentUser(userData);
-    }
-  }, []);
-
-  if (!token && !currentUser) {
-    router.push(`/user/login?redirect=doctor/${doctorId}`);
-  }
+  const { auth } = useAuth();
+  console.log(auth);
+  if (!auth.token && !auth.user)
+    Router.push(`/user/login?redirect=doctor/${doctorId}`);
 
   const { register, handleSubmit } = useForm();
   const checkout = async (data, event) => {
@@ -57,7 +45,7 @@ const Checkout = () => {
     }
 
     const payload = {
-      patient: currentUser.profileId,
+      patient: auth.user.profileId,
       doctor: doctor.id,
       date: data.date,
       chiefComplaints: complainList,
@@ -74,12 +62,12 @@ const Checkout = () => {
 
     const res = await axios.post(`${apiUrl}/appointments`, payload, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${auth.token}`,
       },
     });
 
     const result = res.data;
-    router.push(
+    Router.push(
       `/confirmation?appointmentId=${result.id}&&date=${result.date}`
     );
     return result;

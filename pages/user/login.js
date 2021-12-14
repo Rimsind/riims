@@ -2,14 +2,14 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { setCookie } from "nookies";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import { useAuth } from "context";
 const Login = () => {
-  const router = useRouter();
   const {
     register,
     handleSubmit,
     reset,
+    watch,
     formState: { errors },
   } = useForm();
 
@@ -53,9 +53,9 @@ const Login = () => {
         reset();
         alert("login success");
         if (redirect) {
-          router.push(`/${redirect}`);
+          Router.push(`/${redirect}`);
         } else {
-          router.push("/");
+          Router.push("/");
         }
       }
     } catch (error) {
