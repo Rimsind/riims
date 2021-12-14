@@ -53,7 +53,7 @@ const SocialHistory = ({ patient }) => {
     "Ramps",
     "Elevation",
     "Elevators",
-    "Stairs, Ralling",
+    "Stairs, Railing",
     "Uneven Terrain",
   ];
 
