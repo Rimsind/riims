@@ -2,14 +2,15 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { setCookie } from "nookies";
-import router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { useAuth } from "context";
+import Router from "next/router";
 const Login = () => {
   const {
     register,
     handleSubmit,
     reset,
-    watch,
+
     formState: { errors },
   } = useForm();
 
@@ -53,7 +54,7 @@ const Login = () => {
         reset();
         alert("login success");
         if (redirect) {
-          router.push(`/${redirect}`);
+          Router.push(`/${redirect}`);
         } else {
           Router.push("/");
         }

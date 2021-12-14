@@ -1,11 +1,12 @@
 import Image from "next/image";
 import { useForm } from "react-hook-form";
-import router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import useSWR from "swr";
 import { apiUrl, fetcher } from "config/api";
 import { useState } from "react";
 import axios from "axios";
 import { useAuth } from "context";
+import Router from "next/router";
 
 const Checkout = () => {
   const { doctorId, polyclinicId, fee } = useRouter().query;
@@ -32,7 +33,7 @@ const Checkout = () => {
 
   const { auth } = useAuth();
   if (!auth.token && !auth.user) {
-    router.push(`/user/login?redirect=doctor/${doctorId}`);
+    Router.push(`/user/login?redirect=doctor/${doctorId}`);
   }
 
   const { register, handleSubmit } = useForm();
