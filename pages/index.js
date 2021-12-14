@@ -37,7 +37,7 @@ const Index = () => {
             <div className="col-xl-10">
               <div className="heading-title text-center">
                 <h4 className="heading fw-bold text-white mt-3 mb-4">
-                  B'ooking Your Appointments
+                  Booking Your Appointments
                 </h4>
                 <p className="para-desc mx-auto text-white-50 mb-0">
                   Great doctor if you need your family member to get effective
