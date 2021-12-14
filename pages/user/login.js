@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { setCookie } from "nookies";
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { useAuth } from "context";
 const Login = () => {
   const {
