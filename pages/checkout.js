@@ -8,7 +8,7 @@ import axios from "axios";
 import { useAuth } from "context";
 
 const Checkout = () => {
-  const { doctorId, polyclinicId, fee, schedule } = useRouter().query;
+  const { doctorId, polyclinicId, fee } = useRouter().query;
   const { data: doctor } = useSWR(`${apiUrl}/doctors/${doctorId}`, fetcher);
   const { data: polyclinic } = useSWR(
     `${apiUrl}/polyclinics/${polyclinicId}`,
