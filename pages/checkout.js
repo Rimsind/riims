@@ -1,11 +1,10 @@
 import Image from "next/image";
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import useSWR from "swr";
 import { apiUrl, fetcher } from "config/api";
 import { useState } from "react";
 import axios from "axios";
-import Router from "next/router";
 import { useAuth } from "context";
 
 const Checkout = () => {
