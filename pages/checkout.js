@@ -33,9 +33,9 @@ const Checkout = () => {
 
   const { auth } = useAuth();
 
-  if (!auth.token && !auth.user) {
-    Router.push("/login");
-  }
+  // if (!auth.token && !auth.user) {
+  //   Router.push("/login");
+  // }
   // Router.push(`/user/login?redirect=doctor/${doctorId}`);
 
   const { register, handleSubmit } = useForm();
