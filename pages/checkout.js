@@ -3,9 +3,9 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import { apiUrl, fetcher } from "config/api";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { useAuth } from "context";
+import { parseCookies } from "nookies";
 
 const Checkout = () => {
   const router = useRouter();
@@ -31,8 +31,20 @@ const Checkout = () => {
     setDuration("");
   };
 
-  const { auth } = useAuth();
-  if (!auth.token && !auth.user) {
+  const [token, setToken] = useState(null);
+
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    const { token, user } = parseCookies();
+    if (token && user) {
+      setToken(token);
+      const userData = JSON.parse(user);
+      setCurrentUser(userData);
+    }
+  }, []);
+
+  if (!token && !currentUser) {
     router.push(`/user/login?redirect=doctor/${doctorId}`);
   }
 
@@ -45,7 +57,7 @@ const Checkout = () => {
     }
 
     const payload = {
-      patient: auth.user.profileId,
+      patient: currentUser.profileId,
       doctor: doctor.id,
       date: data.date,
       chiefComplaints: complainList,
@@ -62,7 +74,7 @@ const Checkout = () => {
 
     const res = await axios.post(`${apiUrl}/appointments`, payload, {
       headers: {
-        Authorization: `Bearer ${auth.token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
 
