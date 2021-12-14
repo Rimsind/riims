@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useForm } from "react-hook-form";
-import Router, { useRouter } from "next/router";
+import router, { useRouter } from "next/router";
 import useSWR from "swr";
 import { apiUrl, fetcher } from "config/api";
 import { useState } from "react";
@@ -32,7 +32,7 @@ const Checkout = () => {
 
   const { auth } = useAuth();
   if (!auth.token && !auth.user) {
-    Router.push(`/user/login?redirect=doctor/${doctorId}`);
+    router.push(`/user/login?redirect=doctor/${doctorId}`);
   }
 
   const { register, handleSubmit } = useForm();

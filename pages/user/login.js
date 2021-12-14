@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { setCookie } from "nookies";
-import { useRouter } from "next/router";
+import router, { useRouter } from "next/router";
 import { useAuth } from "context";
 const Login = () => {
   const {
@@ -53,7 +53,7 @@ const Login = () => {
         reset();
         alert("login success");
         if (redirect) {
-          Router.push(`/${redirect}`);
+          router.push(`/${redirect}`);
         } else {
           Router.push("/");
         }
