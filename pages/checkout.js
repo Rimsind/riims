@@ -10,7 +10,6 @@ import { useAuth } from "context";
 
 const Checkout = () => {
   const { doctorId, polyclinicId, fee, schedule } = useRouter().query;
-  console.log(schedule);
   const { data: doctor } = useSWR(`${apiUrl}/doctors/${doctorId}`, fetcher);
   const { data: polyclinic } = useSWR(
     `${apiUrl}/polyclinics/${polyclinicId}`,
@@ -33,7 +32,6 @@ const Checkout = () => {
   };
 
   const { auth } = useAuth();
-  console.log(auth);
   if (!auth.token && !auth.user) {
     Router.push(`/user/login?redirect=doctor/${doctorId}`);
   }
