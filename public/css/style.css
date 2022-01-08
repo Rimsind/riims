@@ -4732,11 +4732,6 @@ i.custom-icon {
   align-items: center;
 }
 
-/* .custom-image {
-  display: flex;
-  justify-content: center;
-} */
-
 img.custom-polyclinic-image {
   height: 200px;
 }
@@ -5308,31 +5303,79 @@ a.custom-navbar-link {
   padding-top: 110px;
 }
 
-.loader {
-  border: 16px solid #f3f3f3;
+/* custom Nursing home stylesheet */
+
+.nursing-profile-item {
+  text-align: center;
+}
+
+.nursing-profile-item .nursing-profile-image {
   border-radius: 50%;
-  border-top: 16px solid #3498db;
-  width: 120px;
-  height: 120px;
-  -webkit-animation: spin 2s linear infinite; /* Safari */
-  animation: spin 2s linear infinite;
 }
 
-/* Safari */
-@-webkit-keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
+.nursing-profile {
+  background-color: #c7e3ff;
+  border: 1px solid #00000017;
+  border-radius: 4px;
+  box-shadow: 0px 0px 20px 2px #efefef;
+  padding: 30px;
+  margin: 15px;
 }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+.nursing-overview {
+  margin: 15px;
+  padding: 15px;
+  background-color: aliceblue;
+  border-top: 4px solid #396cf0;
+  border-radius: 4px 4px 0 0;
+}
+
+.offer-item {
+  margin: 10px 0;
+  padding: 13px;
+  border: 1px dotted #0580fb;
+  border-radius: 4px;
+  background: white;
+  background: linear-gradient(to left, white 50%, #c7deff 50%) right;
+  background-size: 200%;
+  transition: 0.5s ease-out;
+}
+
+.offer-item:hover {
+  background-position: left;
+}
+
+.offer-item-icon {
+  margin-top: 13px;
+}
+
+.offer-item-icon i {
+  font-size: 24px;
+  background-color: #396cf0;
+  border-radius: 100%;
+  padding: 15px;
+  color: white;
+}
+
+.offer-item-qty {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.offer-item-title {
+  font-size: 18px;
+}
+
+.nursing-card-item {
+  background: #323950;
+  color: white;
+}
+
+.nursing-card-title {
+  margin-top: 15px;
+}
+
+.nursing-doctor-card-item {
+  background-color: antiquewhite;
+  padding: 10px;
 }

@@ -7,10 +7,10 @@ import useSWR from "swr";
 
 const Index = () => {
   const {
-    data: polyclinics,
+    data: nursingHome,
     loading,
     error,
-  } = useSWR(`${apiUrl}/polyclinics`, fetcher);
+  } = useSWR(`${apiUrl}/nursing-homes`, fetcher);
 
   if (loading) {
     return <loading />;
@@ -30,18 +30,18 @@ const Index = () => {
                 <div className="container">
                   <SearchBar />
                   <div className="row align-items-center">
-                    {polyclinics?.map((curElem) => {
+                    {nursingHome?.map((curElem) => {
                       return (
                         <ClinicCard
                           key={curElem.id}
                           id={curElem.id}
                           name={curElem.name}
-                          image={curElem.coverImage?.url}
+                          image={curElem.profile_image?.url}
                           street={curElem.street_address}
                           city={curElem.city}
                           phone={curElem.phone}
                           email={curElem.email}
-                          link="polyclinic"
+                          link="nursing-home"
                         />
                       );
                     })}

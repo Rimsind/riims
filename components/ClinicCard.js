@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-const PolyclinicCard = (props) => {
+const ClinicCard = (props) => {
   return (
     <>
       <div className="col-lg-6 col-md-12 mt-4 pt-2">
@@ -48,7 +48,7 @@ const PolyclinicCard = (props) => {
                 <div className="dr-button mt-4">
                   <div className="row align-items-center">
                     <div className="col-md-12">
-                      <Link href={`/polyclinic/${props.id}`}>
+                      <Link href={`/${props.link}/${props.id}`}>
                         <a className="btn btn-primary">View</a>
                       </Link>
                     </div>
@@ -63,4 +63,4 @@ const PolyclinicCard = (props) => {
   );
 };
 
-export default PolyclinicCard;
+export default ClinicCard;

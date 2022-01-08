@@ -174,21 +174,6 @@ const Navbar = () => {
               </div>
             </li>
           </ul>
-          <div className="menu-extras">
-            <div className="menu-item">
-              <button
-                className="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
-                <span className="navbar-toggler-icon"></span>
-              </button>
-            </div>
-          </div>
 
           <div id="navigation">
             <ul className="navigation-menu nav-left nav-light me-auto ms-auto">
@@ -199,12 +184,17 @@ const Navbar = () => {
               </li>
               <li>
                 <Link href="/doctor">
-                  <a className="sub-menu-item"> Find Doctors</a>
+                  <a className="sub-menu-item">Doctors</a>
                 </Link>
               </li>
               <li>
                 <Link href="/polyclinic">
-                  <a className="sub-menu-item">Find Polyclinic</a>
+                  <a className="sub-menu-item">Polyclinic</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/nursing-home">
+                  <a className="sub-menu-item">Nursing Home</a>
                 </Link>
               </li>
               <li>
@@ -214,7 +204,7 @@ const Navbar = () => {
               </li>
               <li>
                 <Link href="/contact">
-                  <a className="sub-menu-item">Contact Us</a>
+                  <a className="sub-menu-item">Contact</a>
                 </Link>
               </li>
             </ul>
