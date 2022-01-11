@@ -147,7 +147,7 @@ const FunctionalStatus = ({ patient }) => {
                     <div className="row">
                       {difficultyWithMove.map((item, index) => (
                         <div
-                          className="col-md-3"
+                          className="col-md-4"
                           {...register("locomotion")}
                           key={index}
                         >

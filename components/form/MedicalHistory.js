@@ -62,11 +62,13 @@ const MedicalHistory = ({ patient }) => {
     "Genetic Disease",
     "Pacemaker",
     "AIDS",
+    "Anemia",
     "Emphysema",
     "Kidney Disease",
     "Parkinson’s Disease",
     "Asthma",
     "Epilepsy/Seizures",
+    "Fractures",
     "Liver Disease",
     "Prostate Disease",
     "Arthritis",
@@ -76,7 +78,7 @@ const MedicalHistory = ({ patient }) => {
     "Blood Disorder",
     "Heart Attack",
     "Lung Disorder",
-    "Stroke",
+    "CVA/Stroke",
     "Broken Bones",
     "Heart Disease",
     "Lyme’s Disease",
@@ -95,6 +97,9 @@ const MedicalHistory = ({ patient }) => {
     "Depression",
     "High Cholesterol",
     "Muscular Dystrophy",
+    "Restless Leg Syndrome",
+    "Fibromyalgia",
+    "Migraine",
   ];
   const diagnostic_tests = [
     "No Diagnostic Testing",
@@ -119,6 +124,7 @@ const MedicalHistory = ({ patient }) => {
     "Bone Scan",
     "EKG",
     "Spinal Tap",
+    "Others",
   ];
 
   const non_prescription_medications = [

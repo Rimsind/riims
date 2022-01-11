@@ -108,26 +108,7 @@ const EmploymentStatus = ({ patient }) => {
                   </div>
                   <div className="col-md-9">
                     <div className="row">
-                      <div className="col-md-3" {...register("workStatus")}>
-                        <div className="row">
-                          <div className="col-md-2">
-                            <input
-                              className="form-check-input"
-                              type="radio"
-                              name="workStatus"
-                              value="Unemployed"
-                              defaultChecked={
-                                !!employmentStatus &&
-                                employmentStatus.work_status === "Unemployed"
-                              }
-                            />
-                          </div>
-                          <div className="col-md-10">
-                            <p className="space-x-4">Unemployed</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-md-3" {...register("workStatus")}>
+                      <div className="col-md-4" {...register("workStatus")}>
                         <div className="row">
                           <div className="col-md-2">
                             <input
@@ -142,70 +123,12 @@ const EmploymentStatus = ({ patient }) => {
                               }
                             />
                           </div>
-                          <div className="col-md-10">
+                          <div className="col-md-9">
                             <p className="space-x-4">Work Full Time</p>
                           </div>
                         </div>
                       </div>
-                      <div className="col-md-3" {...register("workStatus")}>
-                        <div className="row">
-                          <div className="col-md-2">
-                            <input
-                              className="form-check-input"
-                              type="radio"
-                              name="workStatus"
-                              value="Work Light Duty"
-                              defaultChecked={
-                                !!employmentStatus &&
-                                employmentStatus.work_status ===
-                                  "Work Light Duty"
-                              }
-                            />
-                          </div>
-                          <div className="col-md-10">
-                            <p className="space-x-4">Work Light Duty</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-md-3" {...register("workStatus")}>
-                        <div className="row">
-                          <div className="col-md-2">
-                            <input
-                              className="form-check-input"
-                              type="radio"
-                              name="workStatus"
-                              value="Student"
-                              defaultChecked={
-                                !!employmentStatus &&
-                                employmentStatus.work_status === "Student"
-                              }
-                            />
-                          </div>
-                          <div className="col-md-10">
-                            <p className="space-x-4">Student</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-md-3" {...register("workStatus")}>
-                        <div className="row">
-                          <div className="col-md-2">
-                            <input
-                              className="form-check-input"
-                              type="radio"
-                              name="workStatus"
-                              value="Homemaker"
-                              defaultChecked={
-                                !!employmentStatus &&
-                                employmentStatus.work_status === "Homemaker"
-                              }
-                            />
-                          </div>
-                          <div className="col-md-10">
-                            <p className="space-x-4">Homemaker</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-md-3" {...register("workStatus")}>
+                      <div className="col-md-4" {...register("workStatus")}>
                         <div className="row">
                           <div className="col-md-2">
                             <input
@@ -225,7 +148,65 @@ const EmploymentStatus = ({ patient }) => {
                           </div>
                         </div>
                       </div>
-                      <div className="col-md-3" {...register("workStatus")}>
+                      <div className="col-md-4" {...register("workStatus")}>
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="radio"
+                              name="workStatus"
+                              value="Work Light Duty"
+                              defaultChecked={
+                                !!employmentStatus &&
+                                employmentStatus.work_status ===
+                                  "Work Light Duty"
+                              }
+                            />
+                          </div>
+                          <div className="col-md-9">
+                            <p className="space-x-4">Work Light Duty</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-4" {...register("workStatus")}>
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="radio"
+                              name="workStatus"
+                              value="Homemaker"
+                              defaultChecked={
+                                !!employmentStatus &&
+                                employmentStatus.work_status === "Homemaker"
+                              }
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Homemaker</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-4" {...register("workStatus")}>
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="radio"
+                              name="workStatus"
+                              value="Retired"
+                              defaultChecked={
+                                !!employmentStatus &&
+                                employmentStatus.work_status === "Retired"
+                              }
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Retired</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-4" {...register("workStatus")}>
                         <div className="row">
                           <div className="col-md-2">
                             <input
@@ -244,22 +225,42 @@ const EmploymentStatus = ({ patient }) => {
                           </div>
                         </div>
                       </div>
-                      <div className="col-md-3" {...register("workStatus")}>
+                      <div className="col-md-4" {...register("workStatus")}>
                         <div className="row">
                           <div className="col-md-2">
                             <input
                               className="form-check-input"
                               type="radio"
                               name="workStatus"
-                              value="Retired"
+                              value="Unemployed"
                               defaultChecked={
                                 !!employmentStatus &&
-                                employmentStatus.work_status === "Retired"
+                                employmentStatus.work_status === "Unemployed"
                               }
                             />
                           </div>
-                          <div className="col-md-10">
-                            <p className="space-x-4">Retired</p>
+                          <div className="col-md-8">
+                            <p className="space-x-4">Unemployed</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="col-md-4" {...register("workStatus")}>
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="radio"
+                              name="workStatus"
+                              value="Student"
+                              defaultChecked={
+                                !!employmentStatus &&
+                                employmentStatus.work_status === "Student"
+                              }
+                            />
+                          </div>
+                          <div className="col-md-8">
+                            <p className="space-x-4">Student</p>
                           </div>
                         </div>
                       </div>
@@ -303,7 +304,7 @@ const EmploymentStatus = ({ patient }) => {
                   <div className="col-md-9">
                     <div className="row">
                       {work_involves.map((item, index) => (
-                        <div className="col-md-3" key={index}>
+                        <div className="col-md-4" key={index}>
                           <div className="row">
                             <div className="col-md-2">
                               <input
