@@ -1,8 +1,6 @@
 import { useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
 import { apiUrl } from "config/api";
 import axios from "axios";
-import { parseCookies } from "nookies";
 import { useAuth } from "context";
 
 const MedicalHistory = ({ patient }) => {
