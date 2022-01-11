@@ -645,7 +645,7 @@ const MedicalHistory = ({ patient }) => {
                       <div className="col-md-3">Status:</div>
                       <div className="col-md-9">
                         <select
-                          class="form-select form-select-sm"
+                          className="form-select form-select-sm"
                           aria-label=".form-select-sm example"
                         >
                           <option selected>Select Items</option>
@@ -696,7 +696,7 @@ const MedicalHistory = ({ patient }) => {
                       </div>
                       <div className="col-md-7">
                         <select
-                          class="form-select form-select-sm"
+                          className="form-select form-select-sm"
                           aria-label=".form-select-sm example"
                         >
                           <option selected>Select Items</option>
@@ -714,7 +714,7 @@ const MedicalHistory = ({ patient }) => {
                       <div className="col-md-5">Any Side Effect:</div>
                       <div className="col-md-7">
                         <select
-                          class="form-select form-select-sm"
+                          className="form-select form-select-sm"
                           aria-label=".form-select-sm example"
                         >
                           <option selected>Select Items</option>
