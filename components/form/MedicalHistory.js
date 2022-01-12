@@ -60,11 +60,13 @@ const MedicalHistory = ({ patient }) => {
     "Genetic Disease",
     "Pacemaker",
     "AIDS",
+    "Anemia",
     "Emphysema",
     "Kidney Disease",
     "Parkinson’s Disease",
     "Asthma",
     "Epilepsy/Seizures",
+    "Fractures",
     "Liver Disease",
     "Prostate Disease",
     "Arthritis",
@@ -74,7 +76,7 @@ const MedicalHistory = ({ patient }) => {
     "Blood Disorder",
     "Heart Attack",
     "Lung Disorder",
-    "Stroke",
+    "CVA/Stroke",
     "Broken Bones",
     "Heart Disease",
     "Lyme’s Disease",
@@ -93,6 +95,9 @@ const MedicalHistory = ({ patient }) => {
     "Depression",
     "High Cholesterol",
     "Muscular Dystrophy",
+    "Restless Leg Syndrome",
+    "Fibromyalgia",
+    "Migraine",
   ];
   const diagnostic_tests = [
     "No Diagnostic Testing",
@@ -117,6 +122,7 @@ const MedicalHistory = ({ patient }) => {
     "Bone Scan",
     "EKG",
     "Spinal Tap",
+    "Others",
   ];
 
   const non_prescription_medications = [
@@ -603,71 +609,130 @@ const MedicalHistory = ({ patient }) => {
                   Medications & Allergies – please check or list all medications
                   or allergies:
                 </h3>
-                <div className="row justify-centent-between align-items-start">
-                  <div className="col-md-3">
-                    <h3 className="fs-6 fs-bold text-dark">
-                      Non - Prescription
-                    </h3>
-                  </div>
-                  <div className="col-md-9">
+                <div className="row justify-centent-between align-items-start mb-3">
+                  <div className="col-md-12">
                     <div className="row">
-                      {non_prescription_medications.map((item, index) => (
-                        <div className="col-md-4" key={index}>
-                          <div className="row">
-                            <div className="col-md-2">
-                              <input
-                                className="form-check-input"
-                                type="checkbox"
-                                name="non_prescription_medications"
-                                value={item}
-                                {...register("non_prescription_medications")}
-                                defaultChecked={
-                                  !!medicalHistory &&
-                                  medicalHistory.non_prescription_medications &&
-                                  makeArrfromString(
-                                    medicalHistory.non_prescription_medications
-                                  ).includes(item)
-                                }
-                              />
-                            </div>
-                            <div className="col-md-10">
-                              <p className="space-x-4">{item}</p>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                <div className="row justify-centent-between align-items-center">
-                  <div className="col-md-3">
-                    <h3 className="fs-6 fs-bold text-dark">Prescription:</h3>
-                  </div>
-                  <div className="col-md-9">
-                    <div className="row">
-                      <div className="col-md-4">
-                        <div className="row">
-                          <div className="col-md-10">
-                            <p className="space-x-4">Medications:</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-md-8">
+                      <div className="col-md-3">Medicine Name:</div>
+                      <div className="col-md-9">
                         <input
                           type="text"
                           className="form-control"
-                          name="prescriptionText"
+                          name="MedicineName"
                           placeholder=""
-                          {...register("prescription_medications")}
-                          defaultValue={
-                            !!medicalHistory &&
-                            !!medicalHistory.prescription_medications
-                              ? medicalHistory.prescription_medications
-                              : ""
-                          }
                         />
                       </div>
-                      <div className="col-md-4"></div>
+                    </div>
+                  </div>
+                </div>
+                <div className="row justify-centent-between align-items-start mb-3">
+                  <div className="col-md-6">
+                    <div className="row">
+                      <div className="col-md-6">Start Date:</div>
+                      <div className="col-md-6">
+                        <input
+                          type="date"
+                          className="form-control"
+                          name="MedicineName"
+                          placeholder=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="row">
+                      <div className="col-md-3">Status:</div>
+                      <div className="col-md-9">
+                        <select
+                          className="form-select form-select-sm"
+                          aria-label=".form-select-sm example"
+                        >
+                          <option selected>Select Items</option>
+                          <option value="1">Continue</option>
+                          <option value="2">End</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="row justify-centent-between align-items-center mb-3">
+                  <div className="col-md-6">
+                    <div className="row">
+                      <div className="col-md-7">
+                        Medicine Dose (Including MG/MCG):
+                      </div>
+                      <div className="col-md-5">
+                        <input
+                          type="text"
+                          className="form-control"
+                          name="MedicineName"
+                          placeholder=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="row">
+                      <div className="col-md-7">
+                        Friquency (How Many Doses Per/Day):
+                      </div>
+                      <div className="col-md-5">
+                        <input
+                          type="text"
+                          className="form-control"
+                          name="MedicineName"
+                          placeholder=""
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="row justify-centent-between align-items-start mb-3">
+                  <div className="col-md-12">
+                    <div className="row">
+                      <div className="col-md-5">
+                        Route (The Way of Taking Medicine):
+                      </div>
+                      <div className="col-md-7">
+                        <select
+                          className="form-select form-select-sm"
+                          aria-label=".form-select-sm example"
+                        >
+                          <option selected>Select Items</option>
+                          <option value="1">Capsule</option>
+                          <option value="2">Injection</option>
+                          <option value="3">Other Way</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="row justify-centent-between align-items-start mb-3">
+                  <div className="col-md-6">
+                    <div className="row">
+                      <div className="col-md-5">Any Side Effect:</div>
+                      <div className="col-md-7">
+                        <select
+                          className="form-select form-select-sm"
+                          aria-label=".form-select-sm example"
+                        >
+                          <option selected>Select Items</option>
+                          <option value="1">Yes</option>
+                          <option value="2">No</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="row">
+                      <div className="col-md-3">If Yes:</div>
+                      <div className="col-md-9">
+                        <input
+                          type="text"
+                          className="form-control"
+                          name="MedicineName"
+                          placeholder=""
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>

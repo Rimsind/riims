@@ -112,273 +112,766 @@ const FunctionalStatus = ({ patient }) => {
                   className="row justify-content-between align-items-start"
                   {...register("currentFunctionalStatus")}
                 >
-                  <div className="col-md-3">
-                    <h3 className="fs-6 fs-bold text-dark">
-                      Any dufficulty with current Functional Mobility:
-                    </h3>
+                  <h3 className="fs-5 fs-bold text-dark mb-3">
+                    Any Difficulty With Current Functional Mobility
+                  </h3>
+                  <div className="col-md-4">
+                    <h3 className="fs-6 fs-bold text-dark">Bed Mobility</h3>
                   </div>
-                  <div className="col-md-9">
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="currentFunctionalStatus"
-                      placeholder=""
-                      defaultValue={
-                        !!functionalStatus &&
-                        !!functionalStatus.currentfunctionalStatus
-                          ? functionalStatus.currentfunctionalStatus
-                          : ""
-                      }
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                className="gen-form mb-3"
-                style={{ borderBottom: "1px solid #bbbaba" }}
-              >
-                <div className="row justify-centent-between align-items-start">
-                  <div className="col-md-3">
-                    <h3 className="fs-6 fs-bold text-dark">
-                      Any Difficulty with Walking / movement such as:
-                    </h3>
-                  </div>
-                  <div className="col-md-9">
-                    <div className="row">
-                      {difficultyWithMove.map((item, index) => (
-                        <div
-                          className="col-md-3"
-                          {...register("locomotion")}
-                          key={index}
-                        >
-                          <div className="row">
-                            <div className="col-md-2">
-                              <input
-                                className="form-check-input"
-                                type="checkbox"
-                                name="locomotion"
-                                value={item}
-                                defaultChecked={
-                                  !!functionalStatus &&
-                                  makeArrfromString(
-                                    functionalStatus.difficultyWithMove
-                                  ).includes(item)
-                                }
-                              />
-                            </div>
-                            <div className="col-md-10">
-                              <p className="space-x-4">{item}</p>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="gen-form mb-3"
-                style={{ borderBottom: "1px solid #bbbaba" }}
-              >
-                <div className="row justify-centent-between align-items-start">
-                  <div className="col-md-3">
-                    <h3 className="fs-6 fs-bold text-dark">
-                      Any Difficulty with self-care activities such as:
-                    </h3>
-                  </div>
-                  <div className="col-md-9">
-                    <div className="row">
-                      {difficultyWithSelfcare.map((item, index) => (
-                        <div
-                          className="col-md-4"
-                          {...register("selfCareActivities")}
-                          key={index}
-                        >
-                          <div className="row">
-                            <div className="col-md-2">
-                              <input
-                                className="form-check-input"
-                                type="checkbox"
-                                name="selfCareActivities"
-                                value={item}
-                                defaultChecked={
-                                  !!functionalStatus &&
-                                  makeArrfromString(
-                                    functionalStatus.difficultyWithSelfcare
-                                  ).includes(item)
-                                }
-                              />
-                            </div>
-                            <div className="col-md-10">
-                              <p className="space-x-4">{item}</p>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="gen-form mb-3"
-                style={{ borderBottom: "1px solid #bbbaba" }}
-              >
-                <div className="row justify-centent-between align-items-start">
-                  <div className="col-md-3">
-                    <h3 className="fs-6 fs-bold text-dark">
-                      Any Difficulty with home management such as:
-                    </h3>
-                  </div>
-                  <div className="col-md-9">
-                    <div className="row">
-                      {difficultyWithHomeManagement.map((item, index) => (
-                        <div
-                          className="col-md-4"
-                          {...register("homeManagement")}
-                          key={index}
-                        >
-                          <div className="row">
-                            <div className="col-md-2">
-                              <input
-                                className="form-check-input"
-                                type="checkbox"
-                                name="homeManagement"
-                                value={item}
-                                defaultChecked={
-                                  !!functionalStatus &&
-                                  makeArrfromString(
-                                    functionalStatus.difficultyWithHomeManagement
-                                  ).includes(item)
-                                }
-                              />
-                            </div>
-                            <div className="col-md-10">
-                              <p className="space-x-4">{item}</p>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="gen-form mb-3"
-                style={{ borderBottom: "1px solid #bbbaba" }}
-              >
-                <div className="row justify-centent-between align-items-start">
-                  <div className="col-md-3">
-                    <h3 className="fs-6 fs-bold text-dark">
-                      Any Difficulty with community and work activities such as:
-                    </h3>
-                  </div>
-                  <div className="col-md-9">
-                    <div className="row">
-                      {difficultyWithWorkActivities.map((item, index) => (
-                        <div
-                          className="col-md-4"
-                          {...register("workActivities")}
-                          key={index}
-                        >
-                          <div className="row">
-                            <div className="col-md-2">
-                              <input
-                                className="form-check-input"
-                                type="checkbox"
-                                name="workActivities"
-                                value={item}
-                                defaultChecked={
-                                  !!functionalStatus &&
-                                  makeArrfromString(
-                                    functionalStatus.difficultyWithWorkActivities
-                                  ).includes(item)
-                                }
-                              />
-                            </div>
-                            <div className="col-md-10">
-                              <p className="space-x-4">{item}</p>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="gen-form mb-3"
-                style={{ borderBottom: "1px solid #bbbaba" }}
-              >
-                <h3 className="fs-6 fs-bold text-dark">
-                  Prior Functional Status(Your status prior to the date of
-                  onset/Injury):
-                </h3>
-                <div className="row justify-centent-between align-items-start">
                   <div className="col-md-8">
-                    <h3 className="fs-6 fs-bold text-dark">
-                      Difficulty with community and work activities such as:
-                    </h3>
-                    <p className="space-x-4">
-                      Prior to your current injury or condition, were you pain
-                      free without any difficulty with locomotion/movement,self
-                      care activities, home management, community and work
-                      activities?
-                    </p>
+                    <div className="row">
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Current"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Current</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Prior"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Prior</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                   <div className="col-md-4">
+                    <h3 className="fs-6 fs-bold text-dark">
+                      Transfers (such as bed to chair, from bed to commode /
+                      toilet)
+                    </h3>
+                  </div>
+                  <div className="col-md-8">
                     <div className="row">
-                      <div className="col-md-12">
-                        <select
-                          className="form-select form-select-sm"
-                          aria-label=".form-select-sm example"
-                          {...register("prior_difficulty")}
-                        >
-                          <option
-                            name="prior_difficulty"
-                            defaultValue={
-                              !!functionalStatus &&
-                              functionalStatus.prior_difficulty
-                            }
-                          >
-                            {!!functionalStatus &&
-                            functionalStatus.prior_difficulty
-                              ? functionalStatus.prior_difficulty
-                              : ""}
-                          </option>
-                          <option value="Yes" name="prior_difficulty">
-                            Yes
-                          </option>
-                          <option value="No" name="prior_difficulty">
-                            No
-                          </option>
-                        </select>
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Current"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Current</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Prior"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Prior</p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
+              </div>
+              <div className="gen-form mb-3">
                 <div
-                  className="row justify-centent-between align-items-center mb-3"
-                  {...register("prior_difficulty_explain")}
+                  className="row justify-content-between align-items-start"
+                  {...register("currentFunctionalStatus")}
                 >
+                  <h3 className="fs-5 fs-bold text-dark mb-3">
+                    Any Difficulty with Walking / movement such as
+                  </h3>
                   <div className="col-md-4">
-                    <p className="space-x-4">If No, Please Explain:</p>
+                    <h3 className="fs-6 fs-bold text-dark">On Ramps</h3>
                   </div>
                   <div className="col-md-8">
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="prior_difficulty_explain"
-                      placeholder=""
-                      defaultValue={
-                        !!functionalStatus &&
-                        !!functionalStatus.prior_difficulty_explain
-                          ? functionalStatus.prior_difficulty_explain
-                          : ""
-                      }
-                    />
+                    <div className="row">
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Current"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Current</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Prior"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Prior</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-4">
+                    <h3 className="fs-6 fs-bold text-dark">Gai (Walking)</h3>
+                  </div>
+                  <div className="col-md-8">
+                    <div className="row">
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Current"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Current</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Prior"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Prior</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-4">
+                    <h3 className="fs-6 fs-bold text-dark">
+                      On Level Surfaces
+                    </h3>
+                  </div>
+                  <div className="col-md-8">
+                    <div className="row">
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Current"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Current</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Prior"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Prior</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-4">
+                    <h3 className="fs-6 fs-bold text-dark">On Stairs</h3>
+                  </div>
+                  <div className="col-md-8">
+                    <div className="row">
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Current"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Current</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Prior"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Prior</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-4">
+                    <h3 className="fs-6 fs-bold text-dark">
+                      On Uneven Surfaces
+                    </h3>
+                  </div>
+                  <div className="col-md-8">
+                    <div className="row">
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Current"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Current</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Prior"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Prior</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
+              <div className="gen-form mb-3">
+                <div
+                  className="row justify-content-between align-items-start"
+                  {...register("currentFunctionalStatus")}
+                >
+                  <h3 className="fs-5 fs-bold text-dark mb-3">
+                    Any Difficulty With Self-Care Activities Such As
+                  </h3>
+                  <div className="col-md-4">
+                    <h3 className="fs-6 fs-bold text-dark">Bathing</h3>
+                  </div>
+                  <div className="col-md-8">
+                    <div className="row">
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Current"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Current</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Prior"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Prior</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-4">
+                    <h3 className="fs-6 fs-bold text-dark">Dressing</h3>
+                  </div>
+                  <div className="col-md-8">
+                    <div className="row">
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Current"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Current</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Prior"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Prior</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-4">
+                    <h3 className="fs-6 fs-bold text-dark">Toileting</h3>
+                  </div>
+                  <div className="col-md-8">
+                    <div className="row">
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Current"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Current</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Prior"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Prior</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="gen-form mb-3">
+                <div
+                  className="row justify-content-between align-items-start"
+                  {...register("currentFunctionalStatus")}
+                >
+                  <h3 className="fs-5 fs-bold text-dark mb-3">
+                    Any Difficulty With Home Management Such As
+                  </h3>
+                  <div className="col-md-4">
+                    <h3 className="fs-6 fs-bold text-dark">Household Chores</h3>
+                  </div>
+                  <div className="col-md-8">
+                    <div className="row">
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Current"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Current</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Prior"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Prior</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-4">
+                    <h3 className="fs-6 fs-bold text-dark">Shopping</h3>
+                  </div>
+                  <div className="col-md-8">
+                    <div className="row">
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Current"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Current</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Prior"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Prior</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-4">
+                    <h3 className="fs-6 fs-bold text-dark">
+                      Driving / Transporting
+                    </h3>
+                  </div>
+                  <div className="col-md-8">
+                    <div className="row">
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Current"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Current</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Prior"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Prior</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-4">
+                    <h3 className="fs-6 fs-bold text-dark">
+                      Care Of Dependents
+                    </h3>
+                  </div>
+                  <div className="col-md-8">
+                    <div className="row">
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Current"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Current</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Prior"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Prior</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="gen-form mb-3">
+                <div
+                  className="row justify-content-between align-items-start"
+                  {...register("currentFunctionalStatus")}
+                >
+                  <h3 className="fs-5 fs-bold text-dark mb-3">
+                    Any Difficulty With Community And Work Activities Such As
+                  </h3>
+                  <div className="col-md-4">
+                    <h3 className="fs-6 fs-bold text-dark">Work</h3>
+                  </div>
+                  <div className="col-md-8">
+                    <div className="row">
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Current"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Current</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Prior"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Prior</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-4">
+                    <h3 className="fs-6 fs-bold text-dark">School</h3>
+                  </div>
+                  <div className="col-md-8">
+                    <div className="row">
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Current"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Current</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Prior"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Prior</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-4">
+                    <h3 className="fs-6 fs-bold text-dark">Recreation</h3>
+                  </div>
+                  <div className="col-md-8">
+                    <div className="row">
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Current"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Current</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Prior"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Prior</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-4">
+                    <h3 className="fs-6 fs-bold text-dark">Sport</h3>
+                  </div>
+                  <div className="col-md-8">
+                    <div className="row">
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Current"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Current</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Prior"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Prior</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-4">
+                    <h3 className="fs-6 fs-bold text-dark">Play Activity</h3>
+                  </div>
+                  <div className="col-md-8">
+                    <div className="row">
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Current"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Current</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-6">
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              name=""
+                              value="Prior"
+                            />
+                          </div>
+                          <div className="col-md-10">
+                            <p className="space-x-4">Prior</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div className="gen-form-soft-button">
                 <div className="row">
                   <div className="col-md-4"></div>

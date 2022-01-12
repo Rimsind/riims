@@ -77,7 +77,7 @@ const GeneralInformation = ({ patient }) => {
                   </div>
                   <div className="col-md-9">
                     <div className="row">
-                      <div className="col-md-3" {...register("race")}>
+                      <div className="col-md-2" {...register("race")}>
                         <div className="row">
                           <div className="col-md-2">
                             <input
@@ -91,7 +91,7 @@ const GeneralInformation = ({ patient }) => {
                               }
                             />
                           </div>
-                          <div className="col-md-10">
+                          <div className="col-md-8">
                             <p className="space-x-4">Asian</p>
                           </div>
                         </div>
@@ -103,15 +103,15 @@ const GeneralInformation = ({ patient }) => {
                               className="form-check-input"
                               type="radio"
                               name="race"
-                              value="Native American"
+                              value="African"
                               defaultChecked={
                                 !!generalInformation &&
-                                generalInformation.race === "Native American"
+                                generalInformation.race === "African"
                               }
                             />
                           </div>
-                          <div className="col-md-10">
-                            <p className="space-x-4">Native American</p>
+                          <div className="col-md-8">
+                            <p className="space-x-4">African</p>
                           </div>
                         </div>
                       </div>
@@ -122,91 +122,53 @@ const GeneralInformation = ({ patient }) => {
                               className="form-check-input"
                               type="radio"
                               name="race"
-                              value="Black"
+                              value="European"
                               defaultChecked={
                                 !!generalInformation &&
-                                generalInformation.race === "Black"
+                                generalInformation.race === "European"
                               }
                             />
                           </div>
-                          <div className="col-md-10">
-                            <p className="space-x-4">Black</p>
+                          <div className="col-md-8">
+                            <p className="space-x-4">European</p>
                           </div>
                         </div>
                       </div>
-                      <div className="col-md-3" {...register("race")}>
+                      <div className="col-md-5" {...register("race")}>
                         <div className="row">
                           <div className="col-md-2">
                             <input
                               className="form-check-input"
                               type="radio"
                               name="race"
-                              value="White"
+                              value="North American"
                               defaultChecked={
                                 !!generalInformation &&
-                                generalInformation.race === "White"
+                                generalInformation.race === "North American"
                               }
                             />
                           </div>
-                          <div className="col-md-10">
-                            <p className="space-x-4">White</p>
+                          <div className="col-md-8">
+                            <p className="space-x-4">North American</p>
                           </div>
                         </div>
                       </div>
-                      <div className="col-md-3" {...register("race")}>
+                      <div className="col-md-5" {...register("race")}>
                         <div className="row">
                           <div className="col-md-2">
                             <input
                               className="form-check-input"
                               type="radio"
                               name="race"
-                              value="Pacific Islander"
+                              value="South American"
                               defaultChecked={
                                 !!generalInformation &&
-                                generalInformation.race === "Pacific Islander"
+                                generalInformation.race === "South American"
                               }
                             />
                           </div>
-                          <div className="col-md-10">
-                            <p className="space-x-4">Pacific Islander</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-md-3" {...register("race")}>
-                        <div className="row">
-                          <div className="col-md-2">
-                            <input
-                              className="form-check-input"
-                              type="radio"
-                              name="race"
-                              value="Hispanic"
-                              defaultChecked={
-                                !!generalInformation &&
-                                generalInformation.race === "Hispanic"
-                              }
-                            />
-                          </div>
-                          <div className="col-md-10">
-                            <p className="space-x-4">Hispanic</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="col-md-3" {...register("race")}>
-                        <div className="row">
-                          <div className="col-md-2">
-                            <input
-                              className="form-check-input"
-                              type="radio"
-                              name="race"
-                              value="Latino"
-                              defaultChecked={
-                                !!generalInformation &&
-                                generalInformation.race === "Latino"
-                              }
-                            />
-                          </div>
-                          <div className="col-md-10">
-                            <p className="space-x-4">Latino</p>
+                          <div className="col-md-8">
+                            <p className="space-x-4">South American</p>
                           </div>
                         </div>
                       </div>
@@ -242,7 +204,7 @@ const GeneralInformation = ({ patient }) => {
                               : ""}
                           </option>
                           <option value="Englisg" name="language">
-                            Englisg
+                            English
                           </option>
                           <option value="Hindi" name="language">
                             Hindi
@@ -276,12 +238,12 @@ const GeneralInformation = ({ patient }) => {
                 <div className="col-md-6">
                   <div className="gen-form mb-3">
                     <div className="row justify-content-between align-items-start">
-                      <div className="col-md-6">
+                      <div className="col-md-8">
                         <h3 className="fs-6 fs-bold text-dark">
                           Highest Level of Education
                         </h3>
                       </div>
-                      <div className="col-md-6">
+                      <div className="col-md-4">
                         <select
                           className="form-select form-select-sm"
                           aria-label=".form-select-sm example"
@@ -333,15 +295,15 @@ const GeneralInformation = ({ patient }) => {
                 style={{ borderBottom: "1px solid #bbbaba" }}
               >
                 <div className="row justify-centent-between align-items-start">
-                  <div className="col-md-3">
+                  <div className="col-md-4">
                     <h3 className="fs-6 fs-bold text-dark">
                       Hand Foot Dominance
                     </h3>
                   </div>
-                  <div className="col-md-9">
+                  <div className="col-md-8">
                     <div className="row">
                       <div
-                        className="col-md-3"
+                        className="col-md-2"
                         {...register("handFootDominance")}
                       >
                         <div className="row">
@@ -357,13 +319,13 @@ const GeneralInformation = ({ patient }) => {
                               }
                             />
                           </div>
-                          <div className="col-md-10">
+                          <div className="col-md-8">
                             <p className="space-x-4">N/A</p>
                           </div>
                         </div>
                       </div>
                       <div
-                        className="col-md-3"
+                        className="col-md-5"
                         {...register("handFootDominance")}
                       >
                         <div className="row">
@@ -380,13 +342,13 @@ const GeneralInformation = ({ patient }) => {
                               }
                             />
                           </div>
-                          <div className="col-md-10">
+                          <div className="col-md-8">
                             <p className="space-x-4">Ambidexterous</p>
                           </div>
                         </div>
                       </div>
                       <div
-                        className="col-md-3"
+                        className="col-md-2"
                         {...register("handFootDominance")}
                       >
                         <div className="row">
@@ -402,7 +364,7 @@ const GeneralInformation = ({ patient }) => {
                               }
                             />
                           </div>
-                          <div className="col-md-10">
+                          <div className="col-md-8">
                             <p className="space-x-4">Left</p>
                           </div>
                         </div>
@@ -425,7 +387,7 @@ const GeneralInformation = ({ patient }) => {
                               }
                             />
                           </div>
-                          <div className="col-md-10">
+                          <div className="col-md-8">
                             <p className="space-x-4">Right</p>
                           </div>
                         </div>
