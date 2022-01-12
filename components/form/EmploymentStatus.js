@@ -57,6 +57,7 @@ const EmploymentStatus = ({ patient }) => {
     "Repetitive arm motions",
     "Excessive stair climbing",
     "Repetitive foot motions",
+    "Others",
   ];
 
   const makeArrfromString = (str) => {

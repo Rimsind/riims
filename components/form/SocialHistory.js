@@ -55,6 +55,7 @@ const SocialHistory = ({ patient }) => {
     "Elevators",
     "Stairs, Railing",
     "Uneven Terrain",
+    "Others",
   ];
 
   const do_uses = [
@@ -70,6 +71,7 @@ const SocialHistory = ({ patient }) => {
     "Glasses",
     "Left Hearing Aid",
     "Right Hearing Aid",
+    "Others",
   ];
 
   const live_where = [
@@ -80,6 +82,7 @@ const SocialHistory = ({ patient }) => {
     "Apartment",
     "Flat",
     "Homeless",
+    "Others",
   ];
 
   const live_with = [
@@ -88,10 +91,11 @@ const SocialHistory = ({ patient }) => {
     "Friend(s)",
     "Child or Children",
     "Spouse",
-    "Oldege House",
+    "Oldage Home",
     "Partner",
     "Brother(s)",
     "Sister(s)",
+    "Others",
   ];
 
   const makeArrfromString = (str) => {

@@ -77,7 +77,7 @@ const GeneralInformation = ({ patient }) => {
                   </div>
                   <div className="col-md-9">
                     <div className="row">
-                      <div className="col-md-2" {...register("race")}>
+                      <div className="col-md-4" {...register("race")}>
                         <div className="row">
                           <div className="col-md-2">
                             <input
@@ -96,7 +96,7 @@ const GeneralInformation = ({ patient }) => {
                           </div>
                         </div>
                       </div>
-                      <div className="col-md-3" {...register("race")}>
+                      <div className="col-md-4" {...register("race")}>
                         <div className="row">
                           <div className="col-md-2">
                             <input
@@ -115,7 +115,7 @@ const GeneralInformation = ({ patient }) => {
                           </div>
                         </div>
                       </div>
-                      <div className="col-md-3" {...register("race")}>
+                      <div className="col-md-4" {...register("race")}>
                         <div className="row">
                           <div className="col-md-2">
                             <input
@@ -169,6 +169,25 @@ const GeneralInformation = ({ patient }) => {
                           </div>
                           <div className="col-md-8">
                             <p className="space-x-4">South American</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="col-md-3" {...register("race")}>
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="radio"
+                              name="race"
+                              value="Others"
+                              defaultChecked={
+                                !!generalInformation &&
+                                generalInformation.race === "Others"
+                              }
+                            />
+                          </div>
+                          <div className="col-md-8">
+                            <p className="space-x-4">Others</p>
                           </div>
                         </div>
                       </div>
@@ -303,7 +322,7 @@ const GeneralInformation = ({ patient }) => {
                   <div className="col-md-8">
                     <div className="row">
                       <div
-                        className="col-md-2"
+                        className="col-md-4"
                         {...register("handFootDominance")}
                       >
                         <div className="row">
@@ -324,31 +343,9 @@ const GeneralInformation = ({ patient }) => {
                           </div>
                         </div>
                       </div>
+
                       <div
-                        className="col-md-5"
-                        {...register("handFootDominance")}
-                      >
-                        <div className="row">
-                          <div className="col-md-2">
-                            <input
-                              className="form-check-input"
-                              type="radio"
-                              name="handFootDominance"
-                              value="Ambidexterous"
-                              defaultChecked={
-                                !!generalInformation &&
-                                generalInformation.physical_dominance ===
-                                  "Ambidexterous"
-                              }
-                            />
-                          </div>
-                          <div className="col-md-8">
-                            <p className="space-x-4">Ambidexterous</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        className="col-md-2"
+                        className="col-md-4"
                         {...register("handFootDominance")}
                       >
                         <div className="row">
@@ -370,7 +367,7 @@ const GeneralInformation = ({ patient }) => {
                         </div>
                       </div>
                       <div
-                        className="col-md-3"
+                        className="col-md-4"
                         {...register("handFootDominance")}
                       >
                         <div className="row">

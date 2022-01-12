@@ -98,6 +98,7 @@ const MedicalHistory = ({ patient }) => {
     "Restless Leg Syndrome",
     "Fibromyalgia",
     "Migraine",
+    "Others",
   ];
   const diagnostic_tests = [
     "No Diagnostic Testing",
@@ -123,21 +124,6 @@ const MedicalHistory = ({ patient }) => {
     "EKG",
     "Spinal Tap",
     "Others",
-  ];
-
-  const non_prescription_medications = [
-    "No Medications",
-    "Decongestant",
-    "Motrin",
-    "Advil/Alleve",
-    "Excedrin",
-    "Vitamins/Minerals",
-    "Antihistamines",
-    "Herbal Supplements",
-    "Tylenol",
-    "Asprin",
-    "Ibuprophen/Naproxen",
-    "Medications",
   ];
 
   const makeArrfromString = (str) => {

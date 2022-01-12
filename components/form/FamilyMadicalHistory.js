@@ -56,6 +56,7 @@ const FamilyMadicalHistory = ({ patient }) => {
     "Mental Illness",
     "Rheumatoid Arthritis",
     "Tuberculosis",
+    "Others",
   ];
 
   return (
