@@ -89,7 +89,10 @@ const FamilyMadicalHistory = ({ patient }) => {
           <div className="accordion-body text-muted">
             <form onSubmit={handleSubmit(updateFamilyHistory)}>
               <div className="gen-form mb-3">
-                <div className="row justify-centent-between align-items-center">
+                <div
+                  className="row justify-centent-between align-items-center"
+                  style={{ marginBottom: "10px" }}
+                >
                   <div className="col-md-6">
                     <div className="row">
                       <div className="col-md-4">
@@ -131,7 +134,7 @@ const FamilyMadicalHistory = ({ patient }) => {
                     <div className="row">
                       <div className="col-md-8">
                         <label htmlFor="" className="form-label">
-                          Age (if death)
+                          Age (if dead)
                         </label>
                       </div>
                       <div className="col-md-4">
@@ -165,7 +168,7 @@ const FamilyMadicalHistory = ({ patient }) => {
                   </div>
                 </div>
                 <h3 className="mt-2 fs-6 fs-bold text-dark">
-                  Which disease you have? (Check all that apply)
+                  Please mention Medical Problems (Check all that apply)
                 </h3>
                 <div className="row justify-centent-between align-items-center">
                   {disease.map((item, index) => (

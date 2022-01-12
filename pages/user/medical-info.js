@@ -16,6 +16,8 @@ import useSWR from "swr";
 import { useAuth } from "context";
 import Script from "next/script";
 
+import LoadingError from "components/common/LoadingError";
+
 const MedicalInfo = () => {
   const { auth } = useAuth();
 
@@ -34,11 +36,7 @@ const MedicalInfo = () => {
   // console.log(data);
 
   if (!data) {
-    return (
-      <div>
-        <h2>loading...</h2>
-      </div>
-    );
+    return <LoadingError />;
   }
   return (
     <>

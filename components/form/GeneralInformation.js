@@ -172,6 +172,25 @@ const GeneralInformation = ({ patient }) => {
                           </div>
                         </div>
                       </div>
+                      <div className="col-md-5" {...register("race")}>
+                        <div className="row">
+                          <div className="col-md-2">
+                            <input
+                              className="form-check-input"
+                              type="radio"
+                              name="race"
+                              value="Australian"
+                              defaultChecked={
+                                !!generalInformation &&
+                                generalInformation.race === "Australian"
+                              }
+                            />
+                          </div>
+                          <div className="col-md-8">
+                            <p className="space-x-4">Australian</p>
+                          </div>
+                        </div>
+                      </div>
                       <div className="col-md-3" {...register("race")}>
                         <div className="row">
                           <div className="col-md-2">

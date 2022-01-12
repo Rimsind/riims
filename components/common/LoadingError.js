@@ -1,3 +1,4 @@
+import Link from "next/link";
 const LoadingError = () => {
   return (
     <>
@@ -5,7 +6,7 @@ const LoadingError = () => {
         style={{
           height: "45vh",
           width: "100%",
-
+          marginBottom: "10px",
           textAlign: "center",
         }}
       >
@@ -13,9 +14,21 @@ const LoadingError = () => {
           <div className="col-md-4"></div>
           <div
             className="col-md-4"
-            style={{ marginTop: "200px", marginLeft: "45px" }}
+            style={{
+              marginTop: "200px",
+              marginLeft: "45px",
+            }}
           >
             <h1>Loading Error...</h1>
+          </div>
+          <div className="col-md-4"></div>
+        </div>
+        <div className="row">
+          <div className="col-md-4"></div>
+          <div className="col-md-4">
+            <Link href="/">
+              <a className="btn btn-primary">Back</a>
+            </Link>
           </div>
           <div className="col-md-4"></div>
         </div>

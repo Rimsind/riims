@@ -13,9 +13,9 @@ const Loading = () => {
           <div className="col-md-4"></div>
           <div
             className="col-md-4"
-            style={{ marginTop: "200px", marginLeft: "220px" }}
+            style={{ marginTop: "200px", marginLeft: "45px" }}
           >
-            <div className="loader"></div>
+            <h1>Loading </h1>
           </div>
           <div className="col-md-4"></div>
         </div>
