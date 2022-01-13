@@ -241,7 +241,7 @@ const GeneralInformation = ({ patient }) => {
                               ? generalInformation.language
                               : ""}
                           </option>
-                          <option value="Englisg" name="language">
+                          <option value="English" name="language">
                             English
                           </option>
                           <option value="Hindi" name="language">

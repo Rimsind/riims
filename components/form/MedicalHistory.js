@@ -100,6 +100,7 @@ const MedicalHistory = ({ patient }) => {
     "Migraine",
     "Others",
   ];
+
   const diagnostic_tests = [
     "No Diagnostic Testing",
     "Bronchoscopy",
@@ -206,7 +207,7 @@ const MedicalHistory = ({ patient }) => {
                 className="gen-form mb-3"
                 style={{ borderBottom: "1px solid #bbbaba" }}
               >
-                <h3 className="fs-6 fs-bold text-dark">
+                <h3 className="fs-6 fs-bold text-dark mb-3">
                   Past medical history - For Women Only:
                 </h3>
                 <div className="row justify-content-between align-items-start">
@@ -687,7 +688,7 @@ const MedicalHistory = ({ patient }) => {
                               </div>
                               <div className="col-md-4">
                                 <div className="row">
-                                  <div className="col-md-4">Status:</div>
+                                  <div className="col-md-4">Type:</div>
                                   <div className="col-md-8">
                                     <select
                                       className="form-select form-select-sm"
