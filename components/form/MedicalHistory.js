@@ -587,185 +587,316 @@ const MedicalHistory = ({ patient }) => {
                   </div>
                 </div>
               </div>
-              <div
-                className="gen-form mb-3"
-                style={{ borderBottom: "1px solid #bbbaba" }}
-              >
-                <h3 className="fs-6 fs-bold text-dark">
-                  Medications & Allergies – please check or list all medications
-                  or allergies:
-                </h3>
-                <div className="row justify-centent-between align-items-start mb-3">
-                  <div className="col-md-12">
-                    <div className="row">
-                      <div className="col-md-2">Medicine Name:</div>
-                      <div className="col-md-4">
-                        <input
-                          type="text"
-                          className="form-control"
-                          name="MedicineName"
-                          placeholder=""
-                        />
-                      </div>
-                      <div className="col-md-4">
-                        Medicine Dose (Including MG/MCG):
-                      </div>
-                      <div className="col-md-2">
-                        <input
-                          type="text"
-                          className="form-control"
-                          name="MedicineName"
-                          placeholder=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="row justify-centent-between align-items-start mb-3">
-                  <div className="col-md-4">
-                    <div className="row">
-                      <div className="col-md-6">Start Date:</div>
-                      <div className="col-md-6">
-                        <input
-                          type="date"
-                          className="form-control"
-                          name="MedicineName"
-                          placeholder=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-4">
-                    <div className="row">
-                      <div className="col-md-4">Status:</div>
-                      <div className="col-md-8">
-                        <select
-                          className="form-select form-select-sm"
-                          aria-label=".form-select-sm example"
-                        >
-                          <option selected>Select Items</option>
-                          <option value="1">Continue</option>
-                          <option value="2">End</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-4">
-                    <div className="row">
-                      <div className="col-md-4">Status:</div>
-                      <div className="col-md-8">
-                        <select
-                          className="form-select form-select-sm"
-                          aria-label=".form-select-sm example"
-                        >
-                          <option selected>Select Items</option>
-                          <option value="1">Continue</option>
-                          <option value="2">End</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="row justify-centent-between align-items-center mb-3">
-                  <div className="col-md-6">
-                    <div className="row">
-                      <div className="col-md-5">
-                        Route (The Way of Taking Medicine):
-                      </div>
-                      <div className="col-md-7">
-                        <select
-                          className="form-select form-select-sm"
-                          aria-label=".form-select-sm example"
-                        >
-                          <option selected>Select Items</option>
-                          <option value="1">Capsule</option>
-                          <option value="2">Injection</option>
-                          <option value="3">Other Way</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="row">
-                      <div className="col-md-7">
-                        Friquency (How Many Doses Per/Day):
-                      </div>
-                      <div className="col-md-5">
-                        <select
-                          className="form-select form-select-sm"
-                          aria-label=".form-select-sm example"
-                        >
-                          <option value="1">Yes</option>
-                          <option value="2">No</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </div>
 
-                <div className="row justify-centent-between align-items-start mb-3">
-                  <div className="col-md-6">
-                    <div className="row">
-                      <div className="col-md-5">Any Side Effect:</div>
-                      <div className="col-md-7">
-                        <select
-                          className="form-select form-select-sm"
-                          aria-label=".form-select-sm example"
-                        >
-                          <option selected>Select Items</option>
-                          <option value="1">Yes</option>
-                          <option value="2">No</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="row">
-                      <div className="col-md-2">If Yes:</div>
-                      <div className="col-md-10">
-                        <input
-                          type="text"
-                          className="form-control"
-                          name="MedicineName"
-                          placeholder=""
-                        />
-                      </div>
-                    </div>
-                  </div>
+              <div className="row mb-3">
+                <div className="col-md-9">
+                  <h3 className="fs-6 fs-bold text-dark">
+                    Medications & Allergies – please check or list all
+                    medications or allergies:
+                  </h3>
                 </div>
-                <div className="row justify-centent-between align-items-center">
-                  <div className="col-md-2">
-                    <h3 className="fs-6 fs-bold text-dark">Allergies</h3>
+                <div className="col-md-3">
+                  <div className="text-end">
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                    >
+                      Add New Entry
+                    </button>
                   </div>
-                  <div className="col-md-10">
-                    <div className="row">
-                      <div className="col-md-4">
-                        <div className="row">
-                          <div className="col-md-10">
-                            <p className="space-x-4">
-                              Known allergies to date:
-                            </p>
+
+                  <div
+                    className="modal fade"
+                    id="exampleModal"
+                    tabindex="-1"
+                    aria-labelledby="exampleModalLabel"
+                    aria-hidden="true"
+                  >
+                    <div className="modal-dialog modal-dialog-centered modal-lg">
+                      <div className="modal-content">
+                        <div className="modal-header">
+                          <h3 className="fs-6 fs-bold text-dark">
+                            Medications & Allergies – please check or list all
+                            medications or allergies:
+                          </h3>
+                          <button
+                            type="button"
+                            className="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                          ></button>
+                        </div>
+                        <div className="modal-body">
+                          <div className="gen-form mb-3">
+                            <div className="row justify-centent-between align-items-start mb-3">
+                              <div className="col-md-12">
+                                <div className="row">
+                                  <div className="col-md-2">Medicine Name:</div>
+                                  <div className="col-md-4">
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                      name="MedicineName"
+                                      placeholder=""
+                                    />
+                                  </div>
+                                  <div className="col-md-4">
+                                    Medicine Dose (Including MG/MCG):
+                                  </div>
+                                  <div className="col-md-2">
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                      name="MedicineName"
+                                      placeholder=""
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="row justify-centent-between align-items-start mb-3">
+                              <div className="col-md-4">
+                                <div className="row">
+                                  <div className="col-md-6">Start Date:</div>
+                                  <div className="col-md-6">
+                                    <input
+                                      type="date"
+                                      className="form-control"
+                                      name="MedicineName"
+                                      placeholder=""
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-4">
+                                <div className="row">
+                                  <div className="col-md-4">Status:</div>
+                                  <div className="col-md-8">
+                                    <select
+                                      className="form-select form-select-sm"
+                                      aria-label=".form-select-sm example"
+                                    >
+                                      <option selected>Select Items</option>
+                                      <option value="1">Continue</option>
+                                      <option value="2">End</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-4">
+                                <div className="row">
+                                  <div className="col-md-4">Status:</div>
+                                  <div className="col-md-8">
+                                    <select
+                                      className="form-select form-select-sm"
+                                      aria-label=".form-select-sm example"
+                                    >
+                                      <option selected>Select Items</option>
+                                      <option value="1">Continue</option>
+                                      <option value="2">End</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="row justify-centent-between align-items-center mb-3">
+                              <div className="col-md-6">
+                                <div className="row">
+                                  <div className="col-md-5">
+                                    Route (The Way of Taking Medicine):
+                                  </div>
+                                  <div className="col-md-7">
+                                    <select
+                                      className="form-select form-select-sm"
+                                      aria-label=".form-select-sm example"
+                                    >
+                                      <option selected>Select Items</option>
+                                      <option value="1">Capsule</option>
+                                      <option value="2">Injection</option>
+                                      <option value="3">Other Way</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-6">
+                                <div className="row">
+                                  <div className="col-md-7">
+                                    Friquency (How Many Doses Per/Day):
+                                  </div>
+                                  <div className="col-md-5">
+                                    <select
+                                      className="form-select form-select-sm"
+                                      aria-label=".form-select-sm example"
+                                    >
+                                      <option value="1">Yes</option>
+                                      <option value="2">No</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="row justify-centent-between align-items-start mb-3">
+                              <div className="col-md-6">
+                                <div className="row">
+                                  <div className="col-md-5">
+                                    Any Side Effect:
+                                  </div>
+                                  <div className="col-md-7">
+                                    <select
+                                      className="form-select form-select-sm"
+                                      aria-label=".form-select-sm example"
+                                    >
+                                      <option selected>Select Items</option>
+                                      <option value="1">Yes</option>
+                                      <option value="2">No</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="col-md-6">
+                                <div className="row">
+                                  <div className="col-md-2">If Yes:</div>
+                                  <div className="col-md-10">
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                      name="MedicineName"
+                                      placeholder=""
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="row justify-centent-between align-items-center">
+                              <div className="col-md-2">
+                                <h3 className="fs-6 fs-bold text-dark">
+                                  Allergies
+                                </h3>
+                              </div>
+                              <div className="col-md-10">
+                                <div className="row">
+                                  <div className="col-md-4">
+                                    <div className="row">
+                                      <div className="col-md-10">
+                                        <p className="space-x-4">
+                                          Known allergies to date:
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div className="col-md-8">
+                                    <input
+                                      type="text"
+                                      className="form-control"
+                                      name="allergies"
+                                      placeholder=""
+                                      {...register("allergies")}
+                                      defaultValue={
+                                        !!medicalHistory &&
+                                        !!medicalHistory.allergies
+                                          ? medicalHistory.allergies
+                                          : ""
+                                      }
+                                    />
+                                  </div>
+                                  <div className="col-md-4"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="add_btn text-end mb-3">
+                            <button type="button" className="btn btn-primary">
+                              Add
+                            </button>
+                          </div>
+                          <div
+                            className="table-responsive"
+                            style={{ borderTop: "1px solid #bbbaba" }}
+                          >
+                            <table className="table">
+                              <thead>
+                                <tr>
+                                  <th scope="col">Medicine Name</th>
+                                  <th scope="col">Medicine Dose</th>
+                                  <th scope="col">Start Date</th>
+                                  <th scope="col">Status</th>
+                                  <th scope="col">Type</th>
+                                  <th scope="col">Route</th>
+                                  <th scope="col">Friquency </th>
+                                  <th scope="col">Any Side Effect</th>
+                                  <th scope="col">If Yes </th>
+                                  <th scope="col">Allergies</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>Cipcal</td>
+                                  <td>500</td>
+                                  <td>13/01/2022</td>
+                                  <td>Continue</td>
+                                  <td>Prescribed</td>
+                                  <td>Oral</td>
+                                  <td>2 times per day</td>
+                                  <td>Yes</td>
+                                  <td>Headech</td>
+                                  <td>Rashes</td>
+                                </tr>
+                              </tbody>
+                            </table>
                           </div>
                         </div>
+                        <div className="modal-footer">
+                          <button
+                            type="button"
+                            className="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                          >
+                            Close
+                          </button>
+                          <button type="button" className="btn btn-primary">
+                            Save changes
+                          </button>
+                        </div>
                       </div>
-                      <div className="col-md-8">
-                        <input
-                          type="text"
-                          className="form-control"
-                          name="allergies"
-                          placeholder=""
-                          {...register("allergies")}
-                          defaultValue={
-                            !!medicalHistory && !!medicalHistory.allergies
-                              ? medicalHistory.allergies
-                              : ""
-                          }
-                        />
-                      </div>
-                      <div className="col-md-4"></div>
                     </div>
                   </div>
                 </div>
+              </div>
+
+              <div className="table-responsive">
+                <table className="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Medicine Name</th>
+                      <th scope="col">Medicine Dose</th>
+                      <th scope="col">Start Date</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Type</th>
+                      <th scope="col">Route</th>
+                      <th scope="col">Friquency </th>
+                      <th scope="col">Any Side Effect</th>
+                      <th scope="col">If Yes </th>
+                      <th scope="col">Allergies</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Cipcal</td>
+                      <td>500</td>
+                      <td>13/01/2022</td>
+                      <td>Continue</td>
+                      <td>Prescribed</td>
+                      <td>Oral</td>
+                      <td>2 times per day</td>
+                      <td>Yes</td>
+                      <td>Headech</td>
+                      <td>Rashes</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
               <div className="gen-form-soft-button">
                 <div className="row">
