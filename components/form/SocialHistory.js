@@ -542,17 +542,17 @@ const SocialHistory = ({ patient }) => {
                     </div>
                     <div className="col-md-9">
                       <div className="row">
-                        <div className="col-md-2" {...register("smokeTobacco")}>
+                        <div className="col-md-2" {...register("drinkAlcohol")}>
                           <div className="row">
                             <div className="col-md-2">
                               <input
                                 className="form-check-input"
                                 type="radio"
-                                name="smokeTobacco"
+                                name="drinkAlcohol"
                                 value="No"
                                 defaultChecked={
                                   !!socialHistory &&
-                                  socialHistory.smokeTobacco === "No"
+                                  socialHistory.drinkAlcohol === "No"
                                 }
                               />
                             </div>
@@ -561,17 +561,17 @@ const SocialHistory = ({ patient }) => {
                             </div>
                           </div>
                         </div>
-                        <div className="col-md-4" {...register("smokeTobacco")}>
+                        <div className="col-md-4" {...register("drinkAlcohol")}>
                           <div className="row">
                             <div className="col-md-2">
                               <input
                                 className="form-check-input"
                                 type="radio"
-                                name="smokeTobacco"
+                                name="drinkAlcohol"
                                 value="Occasionaly"
                                 defaultChecked={
                                   !!socialHistory &&
-                                  socialHistory.smokeTobacco === "Occasionaly"
+                                  socialHistory.drinkAlcohol === "Occasionaly"
                                 }
                               />
                             </div>
@@ -599,17 +599,17 @@ const SocialHistory = ({ patient }) => {
                             </div>
                           </div>
                         </div> */}
-                        <div className="col-md-3" {...register("smokeTobacco")}>
+                        <div className="col-md-3" {...register("drinkAlcohol")}>
                           <div className="row">
                             <div className="col-md-2">
                               <input
                                 className="form-check-input"
                                 type="radio"
-                                name="smokeTobacco"
+                                name="drinkAlcohol"
                                 value="Socially"
                                 defaultChecked={
                                   !!socialHistory &&
-                                  socialHistory.smokeTobacco === "Socially"
+                                  socialHistory.drinkAlcohol === "Socially"
                                 }
                               />
                             </div>
@@ -618,17 +618,17 @@ const SocialHistory = ({ patient }) => {
                             </div>
                           </div>
                         </div>
-                        <div className="col-md-3" {...register("smokeTobacco")}>
+                        <div className="col-md-3" {...register("drinkAlcohol")}>
                           <div className="row">
                             <div className="col-md-2">
                               <input
                                 className="form-check-input"
                                 type="radio"
-                                name="smokeTobacco"
+                                name="drinkAlcohol"
                                 value="Heavily"
                                 defaultChecked={
                                   !!socialHistory &&
-                                  socialHistory.smokeTobacco === "Heavily"
+                                  socialHistory.drinkAlcohol === "Heavily"
                                 }
                               />
                             </div>

@@ -12,12 +12,11 @@ const MedicalHistory = ({ patient }) => {
     try {
       const payload = {
         medicalHistory: {
-          past_medical_history: data.past_medical_history.toString(),
-          diagnostic_tests: data.diagnostic_tests.toString(),
-          allergies: data.allergies,
-          prescription_medications: data.prescription_medications,
-          non_prescription_medications:
-            data.non_prescription_medications.toString(),
+          past_medical_history: data.past_medical_history?.toString(),
+          diagnostic_tests: data.diagnostic_tests?.toString(),
+          // allergies: data.allergies,
+          // prescription_medications: data.prescription_medications,
+          // non_prescription_medications: data.non_prescription_medications?.toString(),
           pastMedicalHistoryForWomen: {
             pelvicDisease: data.pelvicDisease,
             endometriosis: data.endometriosis,
