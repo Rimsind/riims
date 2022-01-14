@@ -126,6 +126,37 @@ const MedicalHistory = ({ patient }) => {
     "Others",
   ];
 
+  const frequencyList = [
+    "Select",
+    "DAILY",
+    " 2 TIMES A WEEK",
+    "2 TIMES DAILY",
+    "3 TIMES A WEEK",
+    "3 TIMES DAILY",
+    "4 TIMES A WEEK",
+    "4 TIMES DAILY",
+    "AS DIRECTED",
+    "AS NEEDED",
+    "BED TIME",
+    "EVERY 12 HOURS",
+    "EVERY 2 HOURS",
+    "EVERY 4 HOURS",
+    "EVERY 6 HOURS",
+    "EVERY 72 HOURS",
+    "EVERY 8 HOURS",
+    "EVERY AM",
+    "EVERY OTHER DAY",
+    "EVERY OTHER WEEK",
+    "EVERY PM",
+    "HOURLY",
+    "ENTERMITTENT",
+    "MONTHLY",
+    "WEEKLY",
+    "O2- CONTINUOUS",
+    "O2- NIGHTLY",
+    "O2- PRN",
+  ];
+
   const makeArrfromString = (str) => {
     if (str) {
       const arr = str.split(",");
@@ -633,8 +664,8 @@ const MedicalHistory = ({ patient }) => {
                             <div className="row justify-centent-between align-items-start mb-3">
                               <div className="col-md-12">
                                 <div className="row">
-                                  <div className="col-md-2">Medicine Name:</div>
-                                  <div className="col-md-4">
+                                  <div className="col-md-3">Medicine Name:</div>
+                                  <div className="col-md-9">
                                     <input
                                       type="text"
                                       className="form-control"
@@ -642,8 +673,10 @@ const MedicalHistory = ({ patient }) => {
                                       placeholder=""
                                     />
                                   </div>
+                                </div>
+                                <div className="row mt-2">
                                   <div className="col-md-4">
-                                    Medicine Dose (Including MG/MCG):
+                                    Medicine Dose (MG/MCG):
                                   </div>
                                   <div className="col-md-2">
                                     <input
@@ -653,24 +686,26 @@ const MedicalHistory = ({ patient }) => {
                                       placeholder=""
                                     />
                                   </div>
+                                  <div className="col-md-6">
+                                    <div className="row">
+                                      <div className="col-md-4">
+                                        Start Date:
+                                      </div>
+                                      <div className="col-md-8">
+                                        <input
+                                          type="date"
+                                          className="form-control"
+                                          name="MedicineName"
+                                          placeholder=""
+                                        />
+                                      </div>
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
                             </div>
                             <div className="row justify-centent-between align-items-start mb-3">
-                              <div className="col-md-4">
-                                <div className="row">
-                                  <div className="col-md-6">Start Date:</div>
-                                  <div className="col-md-6">
-                                    <input
-                                      type="date"
-                                      className="form-control"
-                                      name="MedicineName"
-                                      placeholder=""
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="col-md-4">
+                              <div className="col-md-6">
                                 <div className="row">
                                   <div className="col-md-4">Status:</div>
                                   <div className="col-md-8">
@@ -685,7 +720,7 @@ const MedicalHistory = ({ patient }) => {
                                   </div>
                                 </div>
                               </div>
-                              <div className="col-md-4">
+                              <div className="col-md-6">
                                 <div className="row">
                                   <div className="col-md-4">Type:</div>
                                   <div className="col-md-8">
@@ -694,8 +729,8 @@ const MedicalHistory = ({ patient }) => {
                                       aria-label=".form-select-sm example"
                                     >
                                       <option selected>Select Items</option>
-                                      <option value="1">Continue</option>
-                                      <option value="2">End</option>
+                                      <option value="1">Prescribed</option>
+                                      <option value="2">Non-Prescribed</option>
                                     </select>
                                   </div>
                                 </div>
@@ -704,10 +739,8 @@ const MedicalHistory = ({ patient }) => {
                             <div className="row justify-centent-between align-items-center mb-3">
                               <div className="col-md-6">
                                 <div className="row">
-                                  <div className="col-md-5">
-                                    Route (The Way of Taking Medicine):
-                                  </div>
-                                  <div className="col-md-7">
+                                  <div className="col-md-4">Route:</div>
+                                  <div className="col-md-8">
                                     <select
                                       className="form-select form-select-sm"
                                       aria-label=".form-select-sm example"
@@ -722,16 +755,17 @@ const MedicalHistory = ({ patient }) => {
                               </div>
                               <div className="col-md-6">
                                 <div className="row">
-                                  <div className="col-md-7">
-                                    Friquency (How Many Doses Per/Day):
-                                  </div>
-                                  <div className="col-md-5">
+                                  <div className="col-md-4">Friquency:</div>
+                                  <div className="col-md-8">
                                     <select
                                       className="form-select form-select-sm"
                                       aria-label=".form-select-sm example"
                                     >
-                                      <option value="1">Yes</option>
-                                      <option value="2">No</option>
+                                      {frequencyList.map((item, index) => (
+                                        <option value={item} key={index}>
+                                          {item}
+                                        </option>
+                                      ))}
                                     </select>
                                   </div>
                                 </div>
@@ -758,8 +792,8 @@ const MedicalHistory = ({ patient }) => {
                               </div>
                               <div className="col-md-6">
                                 <div className="row">
-                                  <div className="col-md-2">If Yes:</div>
-                                  <div className="col-md-10">
+                                  <div className="col-md-4">If Yes:</div>
+                                  <div className="col-md-8">
                                     <input
                                       type="text"
                                       className="form-control"
@@ -778,7 +812,7 @@ const MedicalHistory = ({ patient }) => {
                               </div>
                               <div className="col-md-10">
                                 <div className="row">
-                                  <div className="col-md-4">
+                                  <div className="col-md-5">
                                     <div className="row">
                                       <div className="col-md-10">
                                         <p className="space-x-4">
@@ -787,19 +821,12 @@ const MedicalHistory = ({ patient }) => {
                                       </div>
                                     </div>
                                   </div>
-                                  <div className="col-md-8">
+                                  <div className="col-md-7">
                                     <input
                                       type="text"
                                       className="form-control"
                                       name="allergies"
                                       placeholder=""
-                                      {...register("allergies")}
-                                      defaultValue={
-                                        !!medicalHistory &&
-                                        !!medicalHistory.allergies
-                                          ? medicalHistory.allergies
-                                          : ""
-                                      }
                                     />
                                   </div>
                                   <div className="col-md-4"></div>
