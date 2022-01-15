@@ -804,35 +804,6 @@ const MedicalHistory = ({ patient }) => {
                                 </div>
                               </div>
                             </div>
-                            <div className="row justify-centent-between align-items-center">
-                              <div className="col-md-2">
-                                <h3 className="fs-6 fs-bold text-dark">
-                                  Allergies
-                                </h3>
-                              </div>
-                              <div className="col-md-10">
-                                <div className="row">
-                                  <div className="col-md-5">
-                                    <div className="row">
-                                      <div className="col-md-10">
-                                        <p className="space-x-4">
-                                          Known allergies to date:
-                                        </p>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div className="col-md-7">
-                                    <input
-                                      type="text"
-                                      className="form-control"
-                                      name="allergies"
-                                      placeholder=""
-                                    />
-                                  </div>
-                                  <div className="col-md-4"></div>
-                                </div>
-                              </div>
-                            </div>
                           </div>
                           <div className="add_btn text-end mb-3">
                             <button type="button" className="btn btn-primary">
@@ -893,7 +864,7 @@ const MedicalHistory = ({ patient }) => {
                 </div>
               </div>
 
-              <div className="table-responsive">
+              <div className="table-responsive mb-3">
                 <table className="table">
                   <thead>
                     <tr>
@@ -924,6 +895,20 @@ const MedicalHistory = ({ patient }) => {
                     </tr>
                   </tbody>
                 </table>
+              </div>
+              <div className="row mb-3">
+                <div className="col-md-4">
+                  <h3 className="fs-6 fs-bold text-dark">Allergies</h3>
+                  <p className="space-x-4">Known allergies to date</p>
+                </div>
+                <div className="col-md-8">
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="allergies"
+                    placeholder=""
+                  />
+                </div>
               </div>
               <div className="gen-form-soft-button">
                 <div className="row">
