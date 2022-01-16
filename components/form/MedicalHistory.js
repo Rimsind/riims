@@ -11,7 +11,7 @@ const MedicalHistory = ({ patient }) => {
   const [medicineName, setMedicineName] = useState();
   const [dose, setDose] = useState();
   const [date, setDate] = useState();
-  const [status, setStatus] = useState("Select Status");
+  const [status, setStatus] = useState();
   const [type, setType] = useState();
   const [route, setRoute] = useState();
   const [frequency, setFrequency] = useState();
