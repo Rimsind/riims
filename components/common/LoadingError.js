@@ -10,18 +10,17 @@ const LoadingError = () => {
           textAlign: "center",
         }}
       >
-        <div className="row">
-          <div className="col-md-4"></div>
-          <div
-            className="col-md-4"
-            style={{
-              marginTop: "200px",
-              marginLeft: "45px",
-            }}
-          >
-            <h1>Loading Error...</h1>
+        <div
+          style={{
+            height: "45vh",
+            width: "100%",
+
+            textAlign: "center",
+          }}
+        >
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">Loading...</span>
           </div>
-          <div className="col-md-4"></div>
         </div>
         <div className="row">
           <div className="col-md-4"></div>

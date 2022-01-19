@@ -9,15 +9,8 @@ const Loading = () => {
           textAlign: "center",
         }}
       >
-        <div className="row">
-          <div className="col-md-4"></div>
-          <div
-            className="col-md-4"
-            style={{ marginTop: "200px", marginLeft: "45px" }}
-          >
-            <h1>Loading </h1>
-          </div>
-          <div className="col-md-4"></div>
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Loading...</span>
         </div>
       </div>
     </>
