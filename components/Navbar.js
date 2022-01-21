@@ -1,13 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
-
 import useSWR from "swr";
 import { apiUrl } from "config/api";
 import { useAuth } from "context";
 
 const Navbar = () => {
   const { auth } = useAuth();
-  console.log(auth, "auth");
 
   const { data } = useSWR(
     `${apiUrl}/patients/${auth?.profileId}`,
@@ -18,6 +16,7 @@ const Navbar = () => {
         },
       });
       const result = res.data;
+
       return result;
     }
   );
