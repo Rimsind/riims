@@ -3,10 +3,9 @@ import { ItemCard, ProfileCard } from "../components/common/index";
 import Link from "next/link";
 import { apiUrl, fetcher } from "config/api";
 import useSWR from "swr";
-import LoadingError from "components/common/LoadingError";
-import Loading from "components/common/Loading";
-
-const Index = () => {
+import Slider from "react-slick";
+import Head from "next/head";
+const Demo = () => {
   const {
     data: specialties,
     loading,
@@ -15,8 +14,32 @@ const Index = () => {
   const { data: doctors } = useSWR(`${apiUrl}/doctors`, fetcher);
   const { data: polyclinics } = useSWR(`${apiUrl}/polyclinics`, fetcher);
 
+  const settings = {
+    className: "center",
+    centerMode: false,
+    infinite: true,
+    slideToScroll: 1,
+    slidesToShow: 3,
+    speed: 500,
+    autoplaySpeed: 2000,
+    cssEase: "linear",
+  };
+
   return (
     <>
+      <Head>
+        <link
+          rel="stylesheet"
+          type="text/css"
+          charSet="UTF-8"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+        />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+        />
+      </Head>
       <section
         className="bg-half-200 d-table w-100"
         style={{
@@ -162,6 +185,144 @@ const Index = () => {
         </div>
       </section>
 
+      <div>
+        <Slider {...settings}>
+          <div>
+            <div className="card features feature-primary bg-transparent border-0">
+              <div className="rims-categories-card-image text-center">
+                <div className="category-card">
+                  <Image
+                    height="100"
+                    width="100"
+                    src="/images/profile.png"
+                    alt="Picture of the author"
+                  />
+                  <div className="card-body pt-0">
+                    <a href="departments.html" className="title text-dark h5">
+                      XYZ
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="card features feature-primary bg-transparent border-0">
+              <div className="rims-categories-card-image text-center">
+                <div className="category-card">
+                  <Image
+                    height="100"
+                    width="100"
+                    src="/images/profile.png"
+                    alt="Picture of the author"
+                  />
+                  <div className="card-body pt-0">
+                    <a href="departments.html" className="title text-dark h5">
+                      XYZ
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="card features feature-primary bg-transparent border-0">
+              <div className="rims-categories-card-image text-center">
+                <div className="category-card">
+                  <Image
+                    height="100"
+                    width="100"
+                    src="/images/profile.png"
+                    alt="Picture of the author"
+                  />
+                  <div className="card-body pt-0">
+                    <a href="departments.html" className="title text-dark h5">
+                      XYZ
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="card features feature-primary bg-transparent border-0">
+              <div className="rims-categories-card-image text-center">
+                <div className="category-card">
+                  <Image
+                    height="100"
+                    width="100"
+                    src="/images/profile.png"
+                    alt="Picture of the author"
+                  />
+                  <div className="card-body pt-0">
+                    <a href="departments.html" className="title text-dark h5">
+                      XYZ
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="card features feature-primary bg-transparent border-0">
+              <div className="rims-categories-card-image text-center">
+                <div className="category-card">
+                  <Image
+                    height="100"
+                    width="100"
+                    src="/images/profile.png"
+                    alt="Picture of the author"
+                  />
+                  <div className="card-body pt-0">
+                    <a href="departments.html" className="title text-dark h5">
+                      XYZ
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="card features feature-primary bg-transparent border-0">
+              <div className="rims-categories-card-image text-center">
+                <div className="category-card">
+                  <Image
+                    height="100"
+                    width="100"
+                    src="/images/profile.png"
+                    alt="Picture of the author"
+                  />
+                  <div className="card-body pt-0">
+                    <a href="departments.html" className="title text-dark h5">
+                      XYZ
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="card features feature-primary bg-transparent border-0">
+              <div className="rims-categories-card-image text-center">
+                <div className="category-card">
+                  <Image
+                    height="100"
+                    width="100"
+                    src="/images/profile.png"
+                    alt="Picture of the author"
+                  />
+                  <div className="card-body pt-0">
+                    <a href="departments.html" className="title text-dark h5">
+                      XYZ
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Slider>
+      </div>
+
       <section className="section bg-white">
         <div className="container mt-50 mt-60">
           <div className="row justify-content-center">
@@ -292,208 +453,9 @@ const Index = () => {
             })}
           </div>
         </div>
-
-        <div className="container mt-100 mt-60">
-          <div className="row align-items-lg-end">
-            <div className="col-md-6">
-              <div className="me-xl-3">
-                <div className="section-title mb-4 pb-2">
-                  <i className="ri-booklet-line text-primary h2"></i>
-                  <h4 className="title mb-4">Book Your Appointment</h4>
-                  <p className="text-muted para-desc mb-0">
-                    Great doctor if you need your family member to get effective
-                    immediate assistance, emergency treatment or a simple
-                    consultation.
-                  </p>
-                </div>
-
-                <div className="features feature-bg-primary d-flex bg-white p-4 rounded-md shadow position-relative overflow-hidden">
-                  <i className="ri-stethoscope-line icons h2 mb-0 text-primary custom-icon"></i>
-                  <div className="ms-3">
-                    <h5 className="titles">Success Of Treatment</h5>
-                    <p className="text-muted para mb-0">
-                      The most well-known dummy text is the Lorem Ipsum, which
-                      is said to have originated in the 16th century.
-                    </p>
-                  </div>
-                  <div className="big-icon">
-                    <i className="ri-stethoscope-line"></i>
-                  </div>
-                </div>
-
-                <div className="features feature-bg-primary d-flex bg-white p-4 rounded-md shadow position-relative overflow-hidden mt-4">
-                  <i className="ri-microscope-line icons h2 mb-0 text-primary custom-icon"></i>
-                  <div className="ms-3">
-                    <h5 className="titles">Modern Technology</h5>
-                    <p className="text-muted para mb-0">
-                      The most well-known dummy text is the Lorem Ipsum, which
-                      is said to have originated in the 16th century.
-                    </p>
-                  </div>
-                  <div className="big-icon">
-                    <i className="ri-microscope-line"></i>
-                  </div>
-                </div>
-
-                <div className="features feature-bg-primary d-flex bg-white p-4 rounded-md shadow position-relative overflow-hidden mt-4">
-                  <i className="ri-nurse-line icons h2 mb-0 text-primary custom-icon"></i>
-                  <div className="ms-3">
-                    <h5 className="titles">Certified Doctors</h5>
-                    <p className="text-muted para mb-0">
-                      The most well-known dummy text is the Lorem Ipsum, which
-                      is said to have originated in the 16th century.
-                    </p>
-                  </div>
-                  <div className="big-icon">
-                    <i className="ri-nurse-line"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-md-6 mt-4 mt-sm-0 pt-2 pt-sm-0">
-              <div className="card border-0 rounded shadow p-4 ms-xl-3">
-                <div className="custom-form">
-                  <form>
-                    <div className="row">
-                      <div className="col-lg-12">
-                        <div className="mb-3">
-                          <label className="form-label">
-                            Patient Name <span className="text-danger">*</span>
-                          </label>
-                          <input
-                            name="name"
-                            id="name1"
-                            type="text"
-                            className="form-control"
-                            placeholder="Patient Name :"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6">
-                        <div className="mb-3">
-                          <label className="form-label">Departments</label>
-                          <select className="form-control department-name select2input">
-                            <option value="EY">Eye Care</option>
-                            <option value="GY">Gynecologist</option>
-                            <option value="PS">Psychotherapist</option>
-                            <option value="OR">Orthopedic</option>
-                            <option value="DE">Dentist</option>
-                            <option value="GA">Gastrologist</option>
-                            <option value="UR">Urologist</option>
-                            <option value="NE">Neurologist</option>
-                          </select>
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6">
-                        <div className="mb-3">
-                          <label className="form-label">Doctor</label>
-                          <select className="form-control doctor-name select2input">
-                            <option value="CA">Dr. Calvin Carlo</option>
-                            <option value="CR">Dr. Cristino Murphy</option>
-                            <option value="AL">Dr. Alia Reddy</option>
-                            <option value="TO">Dr. Toni Kovar</option>
-                            <option value="JE">Dr. Jessica McFarlane</option>
-                            <option value="EL">Dr. Elsie Sherman</option>
-                            <option value="BE">Dr. Bertha Magers</option>
-                            <option value="LO">Dr. Louis Batey</option>
-                          </select>
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6">
-                        <div className="mb-3">
-                          <label className="form-label">
-                            Your Email <span className="text-danger">*</span>
-                          </label>
-                          <input
-                            name="email"
-                            id="email"
-                            type="email"
-                            className="form-control"
-                            placeholder="Your email :"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6">
-                        <div className="mb-3">
-                          <label className="form-label">
-                            Your Phone <span className="text-danger">*</span>
-                          </label>
-                          <input
-                            name="phone"
-                            id="phone"
-                            type="tel"
-                            className="form-control"
-                            placeholder="Your Phone :"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6">
-                        <div className="mb-3">
-                          <label className="form-label">
-                            Date <span className="text-danger">*</span>
-                          </label>
-                          <input
-                            name="date"
-                            type="text"
-                            className="flatpickr flatpickr-input form-control"
-                            id="checkin-date"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="col-lg-6">
-                        <div className="mb-3">
-                          <label className="form-label" htmlFor="input-time">
-                            Time <span className="text-danger">*</span>
-                          </label>
-                          <input
-                            name="time"
-                            type="text"
-                            className="form-control timepicker"
-                            id="input-time"
-                            placeholder="03:30 PM"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="col-lg-12">
-                        <div className="mb-3">
-                          <label className="form-label">
-                            Comments <span className="text-danger">*</span>
-                          </label>
-                          <textarea
-                            name="comments"
-                            id="comments"
-                            rows="4"
-                            className="form-control"
-                            placeholder="Your Message :"
-                          ></textarea>
-                        </div>
-                      </div>
-
-                      <div className="col-lg-12">
-                        <div className="d-grid">
-                          <button type="submit" className="btn btn-primary">
-                            Book An Appointment
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
     </>
   );
 };
 
-export default Index;
+export default Demo;
