@@ -8,6 +8,42 @@ const MedicalHistory = ({ patient }) => {
   const { medicalHistory } = patient;
   const { auth } = useAuth();
 
+  const [surgery, setSurgery] = useState();
+  const [surgeryDate, setSurgeryDate] = useState();
+  const [allSurgery, setAllSurgery] = useState([]);
+
+  const addSurgicalHistory = () => {
+    setAllSurgery([
+      ...allSurgery,
+      {
+        name: surgery,
+        date: surgeryDate,
+      },
+    ]);
+    setSurgery("");
+    setSurgeryDate("");
+  };
+
+  const submitSurgicalHistory = async () => {
+    const payload = {
+      medicalHistory: {
+        surgicalHistory: allSurgery,
+      },
+    };
+    const res = await axios.put(
+      `${apiUrl}/patients/${auth.user?.profileId}`,
+      payload,
+      {
+        headers: {
+          Authorization: `Bearer ${auth.token}`,
+        },
+      }
+    );
+    const result = res.data;
+    alert("Medical History Updated Succesfully");
+    return result;
+  };
+
   const [medicineName, setMedicineName] = useState();
   const [dose, setDose] = useState();
   const [date, setDate] = useState();
@@ -555,7 +591,7 @@ const MedicalHistory = ({ patient }) => {
                   </div>
                 </div>
               </div>
-              {/* <div
+              <div
                 className="gen-form mb-3"
                 style={{ borderBottom: "1px solid #bbbaba" }}
               >
@@ -566,26 +602,125 @@ const MedicalHistory = ({ patient }) => {
                 <div className="row justify-content-between align-items-center">
                   <div className="col-md-12">
                     <div className="row justify-content-between align-items-center">
-                      <div className="col-md-12">
-                        <div className="row justify-content-between align-items-center">
-                          <div className="col-md-3">Surgery Name</div>
-                          <div className="col-md-4">
-                            <input
-                              type="text"
-                              className="form-control"
-                              name="surgicalHistoryTitle"
-                              placeholder=""
-                              {...register("surgicalHistoryTitle")}
-                            />
-                          </div>
-                          <div className="col-md-3">
-                            <input
-                              type="date"
-                              className="form-control"
-                              name="surgicalHistoryDate"
-                              placeholder=""
-                              {...register("surgicalHistoryDate")}
-                            />
+                      <div className="col-md-9"></div>
+                      <div className="col-md-3">
+                        <div className="text-end">
+                          <button
+                            type="button"
+                            className="btn btn-primary"
+                            data-bs-toggle="modal"
+                            data-bs-target="#surgicalhistory"
+                          >
+                            Add New Entry
+                          </button>
+                        </div>
+
+                        <div
+                          className="modal fade"
+                          id="surgicalhistory"
+                          tabIndex="-1"
+                          aria-labelledby="exampleModalLabel"
+                          aria-hidden="true"
+                        >
+                          <div className="modal-dialog modal-dialog-centered modal-lg">
+                            <div className="modal-content">
+                              <div className="modal-header">
+                                <h3 className="fs-6 fs-bold text-dark">
+                                  Surgical History – Please list any surgeries
+                                  you had, and if known include dates:
+                                </h3>
+                                <button
+                                  type="button"
+                                  className="btn-close"
+                                  data-bs-dismiss="modal"
+                                  aria-label="Close"
+                                ></button>
+                              </div>
+                              <div className="modal-body">
+                                <div className="gen-form mb-3">
+                                  <div className="row justify-centent-between align-items-start mb-3">
+                                    <div className="col-md-12">
+                                      <div className="row">
+                                        <div className="col-md-1">Title:</div>
+                                        <div className="col-md-6">
+                                          <input
+                                            type="text"
+                                            className="form-control"
+                                            name="surgery"
+                                            value={surgery}
+                                            onChange={(e) =>
+                                              setSurgery(e.target.value)
+                                            }
+                                          />
+                                        </div>
+                                        <div className="col-md-5">
+                                          <div className="row">
+                                            <div className="col-md-4">
+                                              Date:
+                                            </div>
+                                            <div className="col-md-8">
+                                              <input
+                                                type="date"
+                                                className="form-control"
+                                                name="surgeryDate"
+                                                value={surgeryDate}
+                                                onChange={(e) =>
+                                                  setSurgeryDate(e.target.value)
+                                                }
+                                              />
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="add_btn text-end mb-3">
+                                  <span
+                                    className="btn btn-primary"
+                                    onClick={addSurgicalHistory}
+                                  >
+                                    Add
+                                  </span>
+                                </div>
+                                <div
+                                  className="table-responsive"
+                                  style={{ borderTop: "1px solid #bbbaba" }}
+                                >
+                                  <table className="table">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">Title</th>
+                                        <th scope="col">Date</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      {allSurgery.map((item, index) => (
+                                        <tr key={index}>
+                                          <td>{item.name}</td>
+                                          <td>{item.date}</td>
+                                        </tr>
+                                      ))}
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                              <div className="modal-footer">
+                                <button
+                                  type="button"
+                                  className="btn btn-secondary"
+                                  data-bs-dismiss="modal"
+                                >
+                                  Close
+                                </button>
+                                <span
+                                  className="btn btn-primary"
+                                  onClick={submitSurgicalHistory}
+                                >
+                                  Save changes
+                                </span>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -610,7 +745,7 @@ const MedicalHistory = ({ patient }) => {
                     </tbody>
                   </table>
                 </div>
-              </div> */}
+              </div>
 
               <div
                 className="gen-form mb-3"
@@ -698,6 +833,28 @@ const MedicalHistory = ({ patient }) => {
                             <div className="row justify-centent-between align-items-start mb-3">
                               <div className="col-md-12">
                                 <div className="row">
+                                  <div className="col-md-3">Type:</div>
+                                  <div className="col-md-9">
+                                    <select
+                                      className="form-select form-select-sm"
+                                      aria-label=".form-select-sm example"
+                                      onChange={(e) => setType(e.target.value)}
+                                    >
+                                      <option selected>Select Items</option>
+                                      <option value="Prescribed">
+                                        Prescribed
+                                      </option>
+                                      <option value="Non-Prescribed">
+                                        Non-Prescribed
+                                      </option>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="row justify-centent-between align-items-start mb-3">
+                              <div className="col-md-12">
+                                <div className="row">
                                   <div className="col-md-3">Medicine Name:</div>
                                   <div className="col-md-9">
                                     <input
@@ -766,20 +923,20 @@ const MedicalHistory = ({ patient }) => {
                               </div>
                               <div className="col-md-6">
                                 <div className="row">
-                                  <div className="col-md-4">Type:</div>
+                                  <div className="col-md-4">Friquency:</div>
                                   <div className="col-md-8">
                                     <select
                                       className="form-select form-select-sm"
                                       aria-label=".form-select-sm example"
-                                      onChange={(e) => setType(e.target.value)}
+                                      onChange={(e) =>
+                                        setFrequency(e.target.value)
+                                      }
                                     >
-                                      <option selected>Select Items</option>
-                                      <option value="Prescribed">
-                                        Prescribed
-                                      </option>
-                                      <option value="Non-Prescribed">
-                                        Non-Prescribed
-                                      </option>
+                                      {frequencyList.map((item, index) => (
+                                        <option value={item} key={index}>
+                                          {item}
+                                        </option>
+                                      ))}
                                     </select>
                                   </div>
                                 </div>
@@ -809,29 +966,6 @@ const MedicalHistory = ({ patient }) => {
                               </div>
                               <div className="col-md-6">
                                 <div className="row">
-                                  <div className="col-md-4">Friquency:</div>
-                                  <div className="col-md-8">
-                                    <select
-                                      className="form-select form-select-sm"
-                                      aria-label=".form-select-sm example"
-                                      onChange={(e) =>
-                                        setFrequency(e.target.value)
-                                      }
-                                    >
-                                      {frequencyList.map((item, index) => (
-                                        <option value={item} key={index}>
-                                          {item}
-                                        </option>
-                                      ))}
-                                    </select>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div className="row justify-centent-between align-items-start mb-3">
-                              <div className="col-md-6">
-                                <div className="row">
                                   <div className="col-md-5">
                                     Any Side Effect:
                                   </div>
@@ -850,10 +984,13 @@ const MedicalHistory = ({ patient }) => {
                                   </div>
                                 </div>
                               </div>
-                              <div className="col-md-6">
+                            </div>
+
+                            <div className="row justify-centent-between align-items-start mb-3">
+                              <div className="col-md-12">
                                 <div className="row">
-                                  <div className="col-md-4">If Yes:</div>
-                                  <div className="col-md-8">
+                                  <div className="col-md-2">If Yes:</div>
+                                  <div className="col-md-10">
                                     <input
                                       type="text"
                                       className="form-control"
