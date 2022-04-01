@@ -8,10 +8,10 @@ import "../public/css/materialdesignicons.min.css";
 import "../public/css/remixicon.css";
 import "../public/css/style.css";
 import "../public/css/bootstrap.min.css";
-// import "../node_modules/slick-carousel/slick/slick.css";
-// import "../node_modules/slick-carousel/slick/slick-theme.css";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 import GlobalProvider from "context";
 
 function MyApp({ Component, pageProps }) {

@@ -217,29 +217,30 @@ const FamilyMadicalHistory = ({ patient }) => {
                 borderRadius: "3px",
                 borderBottom: "1px solid #bbbaba",
               }}
-            />
-            <table className="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">Relation</th>
-                  <th scope="col">Age (if living)</th>
-                  <th scope="col">Age (if death)</th>
-                  <th scope="col">Cause of death</th>
-                  <th>Problems</th>
-                </tr>
-              </thead>
-              <tbody>
-                {familyHistory.map((item, index) => (
-                  <tr key={index}>
-                    <td>{item.relation}</td>
-                    <td>{item.age_if_living}</td>
-                    <td>{item.age_if_death}</td>
-                    <td>{item.cause_of_death}</td>
-                    <td>{item.diseases}</td>
+            >
+              <table className="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Relation</th>
+                    <th scope="col">Age (if living)</th>
+                    <th scope="col">Age (if death)</th>
+                    <th scope="col">Cause of death</th>
+                    <th>Problems</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {familyHistory.map((item, index) => (
+                    <tr key={index}>
+                      <td>{item.relation}</td>
+                      <td>{item.age_if_living}</td>
+                      <td>{item.age_if_death}</td>
+                      <td>{item.cause_of_death}</td>
+                      <td>{item.diseases}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>

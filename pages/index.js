@@ -3,18 +3,19 @@ import { ItemCard, ProfileCard } from "../components/common/index";
 import Link from "next/link";
 import { apiUrl, fetcher } from "config/api";
 import useSWR from "swr";
-import LoadingError from "components/common/LoadingError";
-import Loading from "components/common/Loading";
+import Carousel from "react-elastic-carousel";
 
 const Index = () => {
-  const {
-    data: specialties,
-    loading,
-    error,
-  } = useSWR(`${apiUrl}/specialties`, fetcher);
+  const { data: specialties } = useSWR(`${apiUrl}/specialties`, fetcher);
   const { data: doctors } = useSWR(`${apiUrl}/doctors`, fetcher);
   const { data: polyclinics } = useSWR(`${apiUrl}/polyclinics`, fetcher);
 
+  const breakPoints = [
+    { width: 1, itemsToShow: 1 },
+    { width: 550, itemsToShow: 2, itemsToScroll: 2 },
+    { width: 768, itemsToShow: 4 },
+    { width: 1200, itemsToShow: 1 },
+  ];
   return (
     <>
       <section
@@ -178,35 +179,37 @@ const Index = () => {
           </div>
 
           <div className="row">
-            {specialties?.map((curElem) => {
-              return (
-                <div
-                  className="col-xl-3 col-md-4 col-12 mt-3 mb-3"
-                  key={curElem.id}
-                >
-                  <div className="card features feature-primary bg-transparent border-0">
-                    <div className="rims-categories-card-image text-center">
-                      <div className="category-card">
-                        <Image
-                          height="100"
-                          width="100"
-                          src={curElem.image?.url}
-                          alt="Picture of the author"
-                        />
-                        <div className="card-body pt-0">
-                          <a
-                            href="departments.html"
-                            className="title text-dark h5"
-                          >
-                            {curElem.name}
-                          </a>
+            <Carousel breakPoints={breakPoints}>
+              {specialties?.map((curElem) => {
+                return (
+                  <div
+                    className="col-xl-3 col-md-4 col-12 mt-3 mb-3"
+                    key={curElem.id}
+                  >
+                    <div className="card features feature-primary bg-transparent border-0">
+                      <div className="rims-categories-card-image text-center">
+                        <div className="category-card">
+                          <Image
+                            height="100"
+                            width="100"
+                            src={curElem.image?.url}
+                            alt="Picture of the author"
+                          />
+                          <div className="card-body pt-0">
+                            <a
+                              href="departments.html"
+                              className="title text-dark h5"
+                            >
+                              {curElem.name}
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </Carousel>
           </div>
         </div>
       </section>
@@ -229,19 +232,21 @@ const Index = () => {
           </div>
 
           <div className="recent-doctor-list row align-items-center">
-            {doctors?.slice(0, 4).map((curElem) => {
-              return (
-                <ProfileCard
-                  key={curElem.id}
-                  id={curElem.id}
-                  fName={curElem.firstName}
-                  lName={curElem.lastName}
-                  image={curElem.image?.url}
-                  spec={curElem.specialty?.name}
-                  fee={curElem.fee}
-                />
-              );
-            })}
+            <Carousel breakPoints={breakPoints}>
+              {doctors?.map((curElem) => {
+                return (
+                  <ProfileCard
+                    key={curElem.id}
+                    id={curElem.id}
+                    fName={curElem.firstName}
+                    lName={curElem.lastName}
+                    image={curElem.image?.url}
+                    spec={curElem.specialty?.name}
+                    fee={curElem.fee}
+                  />
+                );
+              })}
+            </Carousel>
           </div>
         </div>
         <br />

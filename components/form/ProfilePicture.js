@@ -1,4 +1,3 @@
-import { useForm } from "react-hook-form";
 import Image from "next/image";
 import { useState } from "react";
 import axios from "axios";
